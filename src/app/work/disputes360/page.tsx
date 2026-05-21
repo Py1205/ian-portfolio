@@ -3,15 +3,43 @@ import ThemeToggle from "@/components/ThemeToggle";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import ProjectPagination from "@/components/ProjectPagination";
 import ScreenShowcase from "@/components/ScreenShowcase";
+import ScreenCarousel from "@/components/ScreenCarousel";
+
+const otherScreens = [
+  {
+    src: "/work/disputes360/reporting.avif",
+    alt: "Disputes360 reporting dashboard with KPI cards and charts",
+    caption: "Reporting. The home dashboard agents and managers land on — KPI cards, dispute volume over time, win-rate breakdowns by reason code.",
+  },
+  {
+    src: "/work/disputes360/table-view.avif",
+    alt: "Disputes360 cases list table view with status pills",
+    caption: "Cases list. The all-cases table where agents triage. Each row is a case, with state, dispute reason, and amount surfaced inline.",
+  },
+  {
+    src: "/work/disputes360/filter.avif",
+    alt: "Disputes360 filter panel with dispute state and reason facets",
+    caption: "Filter. A faceted filter panel for slicing the cases list. Selected filters mirror to the right rail so agents can build and save complex views.",
+  },
+  {
+    src: "/work/disputes360/email-template.avif",
+    alt: "Disputes360 email templating with variable picker",
+    caption: "Email templating. Configurable cardholder communications keyed to case events, with a variable picker for case fields like dispute amount and program name.",
+  },
+  {
+    src: "/work/disputes360/bulk-upload.avif",
+    alt: "Disputes360 bulk upload screen with drag-and-drop and file status",
+    caption: "Bulk upload. Lets ops teams submit hundreds of disputes in one file, with templates per dispute type and a status table for tracking rejected entries.",
+  },
+];
 
 const NAV_SECTIONS = [
   { id: "overview", label: "Overview" },
   { id: "inheritance", label: "The Inheritance" },
-  { id: "reframe", label: "Reframing" },
-  { id: "agent-workflow", label: "Agent Workflow" },
-  { id: "ai-layer", label: "AI as a System" },
+  { id: "product", label: "The Product" },
+  { id: "ai-layer", label: "The AI Layer" },
   { id: "delivery", label: "Delivery Loop" },
-  { id: "reflection", label: "Why this project" },
+  { id: "closing", label: "Closing" },
 ];
 
 const labelStyle: React.CSSProperties = {
@@ -63,21 +91,23 @@ const metricPlaceholderStyle: React.CSSProperties = {
 };
 
 const imgPlaceholder = (caption: string) => (
-  <div
-    style={{
-      aspectRatio: "16 / 9",
-      background: "var(--color-border-strong)",
-      borderRadius: "var(--radius-sm)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "24px",
-    }}
-  >
-    <p style={{ fontSize: "13px", color: "var(--color-text-muted)", textAlign: "center", fontStyle: "italic" }}>
-      {caption}
-    </p>
-  </div>
+  <ScreenShowcase columns={1}>
+    <div
+      style={{
+        aspectRatio: "16 / 9",
+        background: "var(--color-border-strong)",
+        borderRadius: "10px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "24px",
+      }}
+    >
+      <p style={{ fontSize: "13px", color: "var(--color-text-muted)", textAlign: "center", fontStyle: "italic" }}>
+        {caption}
+      </p>
+    </div>
+  </ScreenShowcase>
 );
 
 export default function Disputes360Page() {
@@ -113,7 +143,7 @@ export default function Disputes360Page() {
           </h1>
 
           <p style={{ fontSize: "20px", lineHeight: 1.4, color: "var(--color-label)", paddingTop: "32px" }}>
-            I&apos;d owned design on Marqeta&apos;s disputes product since 2022. By 2025, it was clear the architecture underneath it had hit its ceiling. This case study is about the year that followed: leading design on its replacement, and what it meant to design how AI shows up inside regulated, agent-facing work.
+            I&apos;d owned design on Marqeta&apos;s disputes product for four years before I led design on its replacement. This case study is about what the new platform became, and how AI fits inside regulated, agent-facing work.
           </p>
 
           {/* Meta */}
@@ -153,214 +183,291 @@ export default function Disputes360Page() {
         {/* ── Divider ── */}
         <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
 
-        {/* ── Chapter 1: Inheritance ── */}
+        {/* ── Chapter 1: The Inheritance ── */}
         <section id="inheritance" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
           <p style={labelStyle}>Chapter 1</p>
           <h2 style={sectionHeadingStyle}>The inheritance</h2>
 
           <p style={keyInsightStyle}>
-            For three years, I made Marqeta&apos;s disputes product better without fixing what was actually wrong with it. The improvements shipped: CSAT up from 2.4 to 4.3, over $1.5M saved in operational cost, Reg E compliance across three regions. But they all routed through the same monolithic application and the same five-tool sprawl that were the real problem. By 2025, replacing the architecture became a real conversation, and in July I began leading design on the rebuild.
+            I owned design on Marqeta&apos;s disputes product for four years before I led design on its replacement. Four years of improvements made the old system better. None of them fixed what was actually broken about it.
           </p>
 
           <p style={bodyStyle}>
-            The old world was MQD (the Marqeta Dashboard) plus the constellation of tools that kept dispute work moving: Salesforce for cardholder emails, spreadsheets for agent assignment, Looker for reporting, manual screenshots for audit packets. Five systems, held together by agent effort.
+            The product ran inside the Marqeta Dashboard, the operations console agents used to manage cases across Visa, Mastercard, and Pulse. From 2021 to 2025, I shipped improvement after improvement: CSAT from 2.4 to 4.3, $1.5M in operational savings, Reg E across three regions. Real numbers, but the right size for incremental work.
           </p>
-
-          {imgPlaceholder("\"Before\" architecture diagram — MQD + Salesforce + spreadsheets + Looker + manual audit. Caption: \"Five disconnected systems, held together by manual action.\"")}
-
-          <p style={{ ...bodyStyle, paddingTop: "32px" }}>
-            We made the system better, release by release. The numbers said so. But every improvement was routed through a monolithic application on a two-week release cycle, every compliance gap traced back to a manual step that lived between tools, and every customer escalation about reporting ran into the same wall: the data was scattered across systems that didn&apos;t talk to each other.
+          <p style={bodyStyle}>
+            The architecture was the ceiling. A monolithic app on a two-week release cycle, holding together five disconnected systems (MQD, Salesforce, spreadsheets, Looker, manual audit). Agents weren&apos;t using one tool. They were stitching five together with their own attention.
           </p>
           <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            The 2023 attempt to buy a third-party disputes platform had already been retired as unviable. No off-the-shelf tool could absorb Marqeta&apos;s network integrations, regulatory surface, and customer-specific program logic. The only path left was a rebuild.
+            In 2023 the team tried to buy a replacement. Quavo couldn&apos;t handle Marqeta&apos;s network integrations, regional regulatory differences, or customer-specific logic. The buy path closed. By mid-2025 the company committed to build, and I started leading design on Disputes360 in July.
           </p>
+
+          <div style={{ paddingTop: "32px" }}>
+            <ScreenShowcase columns={1}>
+              <img
+                src="/work/disputes360/four-tools-in-one.svg"
+                alt="Diagram showing four legacy tools — MQD case management, Salesforce communications, Looker reporting, and a workforce-management spreadsheet — consolidated into Disputes360"
+                style={{ border: "none" }}
+              />
+            </ScreenShowcase>
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: 1.5,
+                color: "var(--color-text-muted)",
+                paddingTop: "16px",
+                textAlign: "center",
+              }}
+            >
+              Four disconnected tools — case management, communications, reporting, and workforce management — consolidated into Disputes360.
+            </p>
+          </div>
         </section>
 
         {/* ── Divider ── */}
         <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
 
-        {/* ── Chapter 2: Reframe ── */}
-        <section id="reframe" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
+        {/* ── Chapter 2: The Product I designed ── */}
+        <section id="product" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
           <p style={labelStyle}>Chapter 2</p>
-          <h2 style={sectionHeadingStyle}>Reframing the problem</h2>
+          <h2 style={sectionHeadingStyle}>The product I designed</h2>
 
           <p style={keyInsightStyle}>
-            The default framing of a rebuild is &ldquo;replace the old tool with a better tool.&rdquo; The framing I pushed for was different: <em>consolidation is the feature</em>. The old system&apos;s pain points traced back to the seams between five tools, not to any individual tool being bad. So the design move was to collapse the seams, not polish a surface.
+            The team set the direction (consolidate five tools into one platform). As sole designer on Disputes360, I led every surface of what consolidation became, from the sitemap to the case page to the AI integration. The center of gravity is the case page, where agents spend most of their day.
           </p>
 
-          <p style={bodyStyle}>
-            Every time an agent copied case information from MQD into Salesforce to send an email, every time workforce assignment was loaded from a spreadsheet, every time an audit packet required manual screenshots from three systems: each seam was a chance for a compliance gap, a lost case, or an escalation.
-          </p>
-          <p style={bodyStyle}>
-            One app, one data model, one surface where intake, investigation, communication, workforce management, reporting, and audit all live together. That framing shaped everything downstream: the feature set (not &ldquo;what did MQD have,&rdquo; but &ldquo;what did agents do outside MQD&rdquo;), the platform decisions (this became the first app in Marqeta&apos;s connected app ecosystem, with SSO, deployment, and design-system foundations that future apps would inherit), and the rollout (parity with MQD first, then layered expansion).
-          </p>
-
-          <div style={{ paddingTop: "24px", paddingBottom: "24px" }}>
-            {imgPlaceholder("Transformation diagram — scattered five-box \"before\" collapsing into a unified Disputes360 \"after.\" Caption: \"The design move wasn't a better tool. It was collapsing five tools into one surface.\"")}
+          <div style={{ paddingTop: "8px" }}>
+            <ScreenShowcase columns={1}>
+              <img
+                src="/work/disputes360/sitemap.avif"
+                alt="Disputes360 sitemap showing the product's information architecture across Home, Intake, Cardholder Search, Views, and Settings"
+              />
+            </ScreenShowcase>
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: 1.5,
+                color: "var(--color-text-muted)",
+                paddingTop: "16px",
+                textAlign: "center",
+              }}
+            >
+              The Disputes360 sitemap. Five top-level areas — Home, Intake, Cardholder Search, Views, and Settings — plus two global affordances (search and program filter) that persist across the product.
+            </p>
           </div>
 
-          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            Consolidation was the strategy. But strategy is a claim about <em>what to do</em>. The harder question was <em>what to put in front of the agent</em>, because the whole premise would fail if the new app just displayed five tools&apos; worth of content on a single surface. A better tool is not automatically a better workplace.
-          </p>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Chapter 3: Agent Workflow ── */}
-        <section id="agent-workflow" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Chapter 3</p>
-          <h2 style={sectionHeadingStyle}>Designing for how agents actually work</h2>
-
-          <p style={keyInsightStyle}>
-            A dispute agent spends most of their day on one screen: the case detail view. My first instinct was to use a Gantt chart for the case timeline. Dispute cases have milestones, deadlines, dependencies, the exact information Gantt was built for. But when I tried it, the visual form was optimizing for the wrong question. Gantt points the eye forward, but a dispute agent&apos;s work lives backward. They&apos;re responding to things that just happened, not executing a plan. The final design is an event view: a reverse-chronological activity feed where the most recent event sits at the top.
-          </p>
-
-          <p style={bodyStyle}>
-            A dispute has many time-bound milestones: intake, open, ready, submission, network response, chargeback creation, resolution. Each one has its own deadline rules driven by network regulations and Reg E requirements. Sketching a Gantt strip across the top of the case page felt natural: a horizontal timeline, milestones as segments, the current state highlighted, deadlines marked with color.
-          </p>
-          <p style={bodyStyle}>
-            Three problems surfaced together when I tried to map the Visa lifecycle into it.
-          </p>
-          <p style={bodyStyle}>
-            The future it showed wasn&apos;t real. A dispute isn&apos;t a workflow that runs to completion. A case might reach Open state and then be written off because the credit is too small to justify the submission cost, and all the downstream milestones never happen. Gantt displays a <em>plan</em>; dispute cases follow decisions, and most decisions close off most of the diagram. It flattened priority: Gantt presents every milestone with equal visual weight, but agents don&apos;t need to see the whole arc, they need to see the next thing. And it pointed the eye in the wrong direction. Gantt emphasizes <em>what will happen next</em>, but a dispute agent&apos;s work is largely to <em>respond</em>: to new documentation, to network decisions, to merchant evidence. The first question an agent asks when opening a case is not &ldquo;what&apos;s next on the plan,&rdquo; it&apos;s <strong>&ldquo;what&apos;s happened since I last saw this?&rdquo;</strong>
-          </p>
-          <p style={bodyStyle}>
-            Gantt was optimizing for a question the agent wasn&apos;t asking.
-          </p>
-
-          {imgPlaceholder("The \"Gantt version that didn't ship\" — deliberately rough, hand-drawn feel, minimal color. Caption: \"The version I considered first. It made the work look like project management. It isn't.\"")}
-
           <p style={{ ...bodyStyle, paddingTop: "32px" }}>
-            The case page uses an event view instead: a reverse-chronological activity feed where the most recent event always sits at the top and the case&apos;s full history accumulates below. Visually the pattern is closest to package-tracking UI, where the latest status is the first thing you see. The dispute version is denser. Each event can be a cardholder contact, a chargeback transition, a related transaction, a note, a milestone, a compliance deadline. Agents can filter the feed, collapse old days, and pull granular transaction data when they need it.
+            The dispute lifecycle tab is the surface where an agent works one dispute. The AI banner sits at the top, summarizing the case state with a recommended action. Below it, a case management section and event tracker surface the case&apos;s history in reverse. A reference side panel runs alongside with transaction, cardholder, and card data.
           </p>
 
-          {imgPlaceholder("The case lifecycle page — case header, case details on the left, activity/event feed in the center with most recent event at top, filter controls visible, side panels for Point of Interaction data, merchant, user. Caption: \"The case page that ships. Most recent event always on top — because the agent's first question is 'what happened since I last looked.'\"")}
-
-          <p style={{ ...bodyStyle, paddingTop: "32px" }}>
-            The choice isn&apos;t aesthetic. <strong>Gantt assumes the agent&apos;s job is to execute a plan. Event view assumes the agent&apos;s job is to interpret state.</strong> Dispute work is the second question, and the screen should answer it in the first second of looking at it.
+          <ScreenShowcase columns={1}>
+            <img
+              src="/work/disputes360/case-page.avif"
+              alt="Disputes360 dispute lifecycle tab showing the AI recommendation banner, case management and event tracker, and reference side panel"
+            />
+          </ScreenShowcase>
+          <p
+            style={{
+              fontSize: "14px",
+              lineHeight: 1.5,
+              color: "var(--color-text-muted)",
+              paddingTop: "16px",
+              textAlign: "center",
+            }}
+          >
+            The dispute lifecycle tab. The AI recommendation banner sits above the case management and event tracker; a reference side panel runs alongside with transaction, cardholder, and card data.
           </p>
-          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            The event view is also what makes the consolidation from Chapter 2 <em>legible</em>. Instead of reassembling a case from five tools, the agent sees every event from every source, in time order, on one screen. The case arrives pre-assembled. And when the AI Agent eventually joins this screen, it lives in the same visual hierarchy as the feed, as one more thing that&apos;s &ldquo;happened&rdquo; to this case that the agent should consider.
-          </p>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Chapter 4: AI as a System ── */}
-        <section id="ai-layer" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Chapter 4</p>
-          <h2 style={sectionHeadingStyle}>Designing AI as a system, not a feature</h2>
-
-          <p style={keyInsightStyle}>
-            Most enterprise AI features are bolted on. A button appears next to a workflow, suggests something, and the user accepts or ignores. I wanted the AI in Disputes360 to be a layer of the system, not a feature of the product. That meant deciding where it intervenes (intake and decisioning, nowhere else), how it behaves (recommendation, never action), and what it shows (reasoning, not confidence scores). I want to be honest that &ldquo;recommendation, not action&rdquo; is partly a constraint of today&apos;s model and architecture, and partly a design position I&apos;d hold even as the constraints loosen.
-          </p>
-
-          <p style={subHeadingStyle}>Where the AI intervenes</p>
-          <p style={bodyStyle}>
-            The AI Agent shows up at two moments in the case lifecycle.
-          </p>
-          <p style={bodyStyle}>
-            The first is <strong>intake.</strong> After a dispute is created, the AI reads customer-submitted documentation (receipts, shipping confirmations, merchant chats, return labels), extracts the attributes the selected reason code requires, and cross-references them against the agent&apos;s notes. It flags missing documents, contradictions between notes and evidence, and reason codes that the evidence no longer supports.
-          </p>
-
-          {imgPlaceholder("AI Agent document review interface")}
-
-          <p style={{ ...bodyStyle, paddingTop: "32px" }}>
-            The second is <strong>decisioning.</strong> When a case is ready for an action, the AI surfaces a recommendation at the top of the case with its reasoning exposed: <em>&ldquo;Based on PULSE network rules for reason code 4537, this case qualifies for network submission. Transaction details verified. Timeframe compliance: within 120-day filing requirement. No duplicate cases found. No merchant refunds issued.&rdquo;</em>
-          </p>
-
-          {imgPlaceholder("Guided decisioning recommendation card at the top of the case lifecycle view, with expanded reasoning")}
 
           <p style={{ ...bodyStyle, paddingTop: "32px", paddingBottom: 0 }}>
-            Decisioning is also where the AI makes economic judgments: whether a case is worth submitting at all. If the provisional credit is small enough that pursuing the chargeback costs more than it can recover, the AI recommends write-off. I placed this in decisioning rather than intake deliberately. At intake, the agent is still gathering context, and a &ldquo;don&apos;t bother&rdquo; signal that early would pre-empt judgment before it could form. By decisioning, the agent has read the case and is about to commit. That&apos;s the right moment for an economic counter-argument to land.
+            Beyond the dispute lifecycle tab, I designed the reporting dashboard, the cases list and its filter system, email templating for cardholder communications, bulk upload for ops teams, and the supporting tabs on the case (documents, evidences, activity, transactions, raw). The product surface is wide. The dispute lifecycle tab is where AI integration meets agent judgment, which is where the design work goes deep.
           </p>
 
-          <p style={subHeadingStyle}>The interaction model: recommendation as the current form</p>
-          <p style={bodyStyle}>
-            The AI doesn&apos;t act. It recommends. The agent decides, every time.
-          </p>
-          <p style={bodyStyle}>
-            Part of this is constraint. The model isn&apos;t accurate enough to act unsupervised on work this regulated, and agent accountability is currently the backbone of compliance on every dispute. Moving that accountability onto a system requires product, legal, and regulatory alignment that isn&apos;t done yet.
-          </p>
-          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            But I don&apos;t want to frame this purely as a &ldquo;for now&rdquo; situation. In a workflow involving regulated money movement, cardholder rights, bank audits, and real financial loss on both sides of a wrong call, I think the agent&apos;s active role is worth preserving on its own merits, not only while the model catches up. AI will take on more automated work here over time; it should. But &ldquo;more&rdquo; is a direction to work toward, not a promised endpoint. <strong>Some of this work should still have a person in it</strong>, and part of my job as the designer was to keep that seat available.
+          <div style={{ paddingTop: "32px" }}>
+            <ScreenCarousel slides={otherScreens} />
+          </div>
+        </section>
+
+        {/* ── Divider ── */}
+        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
+
+        {/* ── Chapter 3: The AI layer ── */}
+        <section id="ai-layer" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
+          <p style={labelStyle}>Chapter 3</p>
+          <h2 style={sectionHeadingStyle}>The AI layer</h2>
+
+          <p style={keyInsightStyle}>
+            Every case in Disputes360 opens with a banner. The banner is what the AI thinks the agent should do. This chapter is about how the AI gets to that conclusion, and where I designed myself into it.
           </p>
 
-          <p style={subHeadingStyle}>Trust through explainability, and confidence as a routing signal</p>
+          <p style={subHeadingStyle}>Banner: the AI&apos;s read of the case</p>
+          <div style={{ paddingTop: "8px", paddingBottom: "8px" }}>
+            <ScreenShowcase columns={2} className="banner-gallery">
+              <img src="/work/disputes360/banner-ready.avif" alt="Ready to submit banner — confidence high, action: Submit to network" style={{ borderRadius: 0, border: "none" }} />
+              <img src="/work/disputes360/banner-agent-review.avif" alt="Agent review needed banner — three attributes need review" style={{ borderRadius: 0, border: "none" }} />
+              <img src="/work/disputes360/banner-reason-code.avif" alt="Reason code change recommended banner — suggests changing to 13.4 Not as Described" style={{ borderRadius: 0, border: "none" }} />
+              <img src="/work/disputes360/banner-do-not-submit.avif" alt="Do not submit banner — transaction exceeds VISA 120-day limit, action: Acknowledge" style={{ borderRadius: 0, border: "none" }} />
+            </ScreenShowcase>
+            <p
+              style={{
+                fontSize: "14px",
+                lineHeight: 1.5,
+                color: "var(--color-text-muted)",
+                paddingTop: "16px",
+                textAlign: "center",
+              }}
+            >
+              The four banner states: Ready to submit, Agent review needed, Reason code change recommended, and Do not submit.
+            </p>
+          </div>
+
           <p style={bodyStyle}>
-            Every AI recommendation comes with its reasoning visible. Not buried behind a &ldquo;why?&rdquo; link. Not summarized into a confidence score. Shown, in full, at the moment of recommendation. Disputes work lives in a trust economy, and reasoning is what agents, compliance officers, and bank auditors can actually work with.
-          </p>
-          <p style={bodyStyle}>
-            The confidence score (and there is one, on the backend) does different work. It routes. Recommendations below a defined benchmark don&apos;t reach the agent&apos;s screen at all. Above the benchmark, the recommendation appears, but the agent sees reasoning, not the number. An &ldquo;84% confident&rdquo; label is noise. It can&apos;t tell the agent <em>why</em>, and it adds a layer of calibration they have to do (&ldquo;is 84% enough?&rdquo;). Reasoning goes directly into the judgment the agent is already making.
-          </p>
-          <p style={bodyStyle}>
-            This also means absence is a signal. When the AI has no recommendation on a case, the agent doesn&apos;t see a hesitant low-confidence suggestion. They see nothing, which, on this case, is the correct amount of AI.
+            The AI features in Disputes360 shipped in Q1 2026. The goal is to make case decisions faster, more accurate, and more economical: fewer cases submitted that shouldn&apos;t be, more cases auto-processed that should be, <span style={metricPlaceholderStyle}>[placeholder for specific automation % and savings]</span>.
           </p>
           <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            None of these are the obvious choices for demo impact. They&apos;re the right choices if you optimize for the system actually being used, and trusted, five years from now.
+            Agents open dozens of cases a day. The banner sits at the top of every case page, before any case detail. It tells the agent what the AI thinks (the state) and what to do next (an action button: Submit, Acknowledge, Review items, or Change the reason code).
+          </p>
+
+          <p style={subHeadingStyle}>Where the banner comes from</p>
+          <p style={bodyStyle}>
+            The banner doesn&apos;t come from one model. A few factors feed into it: program-level rules, some case context, and the AI&apos;s evaluation of evidence against the requirements of the reason code.
+          </p>
+          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
+            Evidence is the dominant factor. The rest of this chapter is about that part, because that&apos;s where most of the design work lives.
+          </p>
+
+          <p style={subHeadingStyle}>Evidence into judgment</p>
+          <p style={bodyStyle}>
+            The team had a working concept of what the AI should evaluate. Every reason code (Visa 13.1, 13.6, etc.) has a set of conditions that determine whether a dispute can win. The PRD called these attributes. It pointed at the right structure, but the attributes themselves weren&apos;t defined concretely enough for AI or humans to evaluate consistently. That part needed design.
+          </p>
+          <p style={bodyStyle}>
+            I did three things to make the schema work.
+          </p>
+          <p style={bodyStyle}>
+            First, I made each attribute specific. Not &ldquo;merchant met their obligation&rdquo; but &ldquo;return label was generated within the timeframe,&rdquo; &ldquo;credit was issued within the required window.&rdquo; Things AI can check against documents and a human can verify.
+          </p>
+          <p style={bodyStyle}>
+            Second, I rewrote each attribute as a yes/no question. Attributes are the criteria for a successful dispute, so they need a binary answer the AI and the agent can both produce.
+          </p>
+          <p style={bodyStyle}>
+            Third, I aligned the yes answer across all attributes to mean the same thing: this case is closer to being submittable. A yes is always good news. A no is always bad. Without this alignment, aggregating attribute states into a case-level recommendation gets messy fast.
+          </p>
+
+          <div style={{ paddingTop: "16px" }}>
+            {imgPlaceholder("Concept diagram: reason code → attributes (as yes/no questions) → AI scanning documents → three-state evaluation → case-level banner state")}
+          </div>
+
+          <p style={{ ...bodyStyle, paddingTop: "32px" }}>
+            With the schema set, the rest of the system follows. The AI evaluates each attribute against the case documents and returns one of three states:
+          </p>
+          <ul style={{ ...bodyStyle, paddingLeft: "24px", listStyleType: "disc" }}>
+            <li><strong>Confirmed-yes:</strong> evidence supports the attribute</li>
+            <li><strong>Confirmed-no:</strong> evidence contradicts it</li>
+            <li><strong>Unconfirmed:</strong> evidence is missing, or sources disagree</li>
+          </ul>
+          <p style={{ ...bodyStyle, paddingTop: "16px" }}>
+            The states aggregate into the four banner states. All yes goes to Ready to submit. A confirmed-no on a critical attribute goes to Do not submit. Any unconfirmed goes to Agent review needed: the AI doesn&apos;t know, so a human needs to look.
+          </p>
+          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
+            The fourth banner state is the one I want to call out. Reason code change recommended fires when the evidence is solid, just for a different reason code than the one the case was filed under. The AI isn&apos;t unsure. It&apos;s pointing out that the case was filed wrong. Most AI systems don&apos;t have a slot for this kind of correction. Adding one caught a class of cases that binary evaluation would have silently mishandled.
+          </p>
+
+          <p style={subHeadingStyle}>Where the agent sees all of this</p>
+          <p style={bodyStyle}>
+            When an agent wants to verify or override the banner, they open the document review surface. Documents on the left. AI reasoning in the middle. Attribute states with controls on the right.
+          </p>
+
+          <div style={{ paddingTop: "8px" }}>
+            {imgPlaceholder("Document review screen, current version")}
+          </div>
+
+          <p style={{ ...bodyStyle, paddingTop: "32px" }}>
+            Co-locating evidence, reasoning, and controls matters because an agent can&apos;t meaningfully challenge a judgment they can&apos;t see the basis for. If the AI says an attribute is unconfirmed, the agent needs to see the specific document and the specific gap, on the same screen, with the override one click away.
+          </p>
+          <p style={bodyStyle}>
+            This surface went through five versions. Two changes are worth naming.
+          </p>
+          <p style={bodyStyle}>
+            The first version of the panel tagged each attribute with one of three labels: Conflict, Uncertain, Missing. It looked thoughtful, but the labels just described different flavors of &ldquo;not yes.&rdquo; The agent&apos;s job was the same in all three cases: open the evidence, decide. I dropped the labels and kept one state, unconfirmed. Less to read, clearer ask.
+          </p>
+          <p style={bodyStyle}>
+            A later version split the panel into two tabs, Summary and Attributes. I expected agents would want a high-level view before drilling in. They didn&apos;t. They wanted everything visible at once. I pulled the tabs out and let the panel scroll. The version that ships has more on screen than I would have argued for at the start, and it works better.
+          </p>
+
+          <div style={{ paddingTop: "8px" }}>
+            {imgPlaceholder("Iteration comparison: V1 labeled panel vs. current, and V4 tabbed vs. V5 current")}
+          </div>
+
+          <p style={subHeadingStyle}>What&apos;s next</p>
+          <p style={bodyStyle}>
+            Right now every case still passes through an agent. The AI recommends; the agent confirms. That&apos;s the right place for the product to be while the model is being trained and trust is being built.
+          </p>
+          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
+            The direction is conditional automation. For cases where the AI is highly confident across all attributes and evidence is complete, the next version of the system will skip the recommendation and submit the case directly. The agent&apos;s role moves from reviewing every case to reviewing the cases where the system is unsure. The mechanics that make this possible (specific attributes, yes/no schema, three-state evaluation, multi-factor compilation) are already in place. The change is in how much of the loop the human stays in.
           </p>
         </section>
 
         {/* ── Divider ── */}
         <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
 
-        {/* ── Chapter 5: Delivery Loop ── */}
+        {/* ── Chapter 4: Closing the loop ── */}
         <section id="delivery" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Chapter 5</p>
+          <p style={labelStyle}>Chapter 4</p>
           <h2 style={sectionHeadingStyle}>Closing the loop between design and production</h2>
 
           <p style={keyInsightStyle}>
-            Disputes360 was replacing a two-week release cycle with a platform that shipped multiple times a day. Design couldn&apos;t afford to be the slow step. I piloted three approaches to close the loop between design and production: AI-assisted visual QA, coded prototypes, and deliver-in-repo. One instinct applied three ways: shorten the distance between designed and shipped.
+            The new platform deploys differently: smaller surface, faster cycles. Design couldn&apos;t be the slow step.
+          </p>
+
+          <p style={bodyStyle}>
+            I ran three pilots inside Disputes360 to close the gap between design intent and shipped code.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "24px", paddingTop: "8px", paddingBottom: "8px" }}>
             {[
               {
                 title: "VQA (visual QA automation)",
-                body: "An AI-assisted workflow that compares shipped UI against the source Figma, flags mismatches, and generates a pull request with the proposed fix for engineering review. What used to require a designer-engineer pairing session per ticket now runs in the background.",
+                body: "AI compares shipped UI against the Figma source, flags mismatches, and generates pull requests with corrections.",
               },
               {
                 title: "Coded prototypes",
-                body: "For complex flows, I shipped working React prototypes in the same codebase and component library engineering used. Translation loss at handoff disappeared; engineering reviewed interaction logic directly against the code they'd extend.",
+                body: "For complex flows, I prototype directly in React inside engineering's codebase. The conversation with engineering happens in code, not in interpretation.",
               },
               {
                 title: "Deliver-in-repo",
-                body: "For component-level work, the design output was the code. Engineering merged my work into the feature branch directly.",
+                body: "For component-level work, the design artifact is a merged commit on the feature branch.",
               },
             ].map(({ title, body }) => (
               <div key={title} style={{ paddingLeft: "20px", borderLeft: "2px solid var(--color-border-strong)" }}>
                 <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "6px" }}>{title}</p>
                 <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>{body}</p>
-                <p style={{ ...metricPlaceholderStyle, fontSize: "13px", paddingTop: "6px" }}>[Metric to fill]</p>
               </div>
             ))}
           </div>
 
-          <div style={{ paddingTop: "32px" }}>
-            {imgPlaceholder("Simple diagram — traditional handoff (Figma → spec → dev → QA → fix) with latency marked at each arrow, vs. closed-loop handoff with latency collapsed. Caption: \"Three experiments, one instinct: shorten the distance between designed and shipped.\"")}
-          </div>
+          <p style={{ ...bodyStyle, paddingTop: "16px", paddingBottom: 0 }}>
+            These aren&apos;t three separate initiatives. They&apos;re the same instinct expressed three ways: shorten the distance between design intent and shipped code.
+          </p>
+
+          <p style={{ ...metricPlaceholderStyle, fontSize: "14px", paddingTop: "32px" }}>
+            [Metrics to fill: design-to-PR cycle time reduction, PRs generated via VQA pilot, components shipped via in-repo workflow]
+          </p>
         </section>
 
         {/* ── Divider ── */}
         <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
 
-        {/* ── Why this project ── */}
+        {/* ── Closing ── */}
         <section
-          id="reflection"
+          id="closing"
           className="content-col-narrow"
           style={{ padding: "48px", background: "var(--color-toggle-bg)", borderRadius: "var(--radius-sm)" }}
         >
-          <p style={{ ...labelStyle, paddingBottom: "24px" }}>Why this project is in my portfolio</p>
+          <p style={{ ...labelStyle, paddingBottom: "24px" }}>Closing</p>
           <p style={{ fontSize: "20px", fontWeight: 500, lineHeight: 1.6, color: "var(--color-text)", letterSpacing: "-0.01em", paddingBottom: "16px" }}>
-            Most enterprise design case studies show a redesign: here was the old screen, here is the new one, here&apos;s why the new one is better. This case study is about something else. It&apos;s about the judgment to know when a system has hit its ceiling, the endurance to make the case for its replacement, and the design ownership to carry the replacement through while the definition of the work was still being shaped around me.
+            For four years I made the old product better. Then I led the design of the platform replacing it. The judgment that mattered most wasn&apos;t about an interface. It was knowing when incremental improvement had run out.
           </p>
-          <p style={{ fontSize: "17px", color: "var(--color-text)", lineHeight: 1.7, paddingBottom: "24px" }}>
-            Three years on MQD gave me the credibility to see the ceiling. Disputes360 is what I did with that credibility: both in what got shipped, and in how it got shipped.
-          </p>
-          <p style={{ fontSize: "17px", fontStyle: "italic", color: "var(--color-text-muted)", lineHeight: 1.7 }}>
-            Disputes360 is the first app in Marqeta&apos;s connected app ecosystem. The design system, SSO, and composition patterns I built for it will be inherited by six other apps on the platform roadmap. The AI patterns and the delivery workflow will move with them. The case study is about one product. The work is about the pattern.
+          <p style={{ fontSize: "17px", color: "var(--color-text)", lineHeight: 1.7 }}>
+            Disputes360 is the first app in Marqeta&apos;s connected app ecosystem. The patterns I established here will be inherited by the next six apps. The work in this case study is one product. The work it enables is a platform.
           </p>
         </section>
 
