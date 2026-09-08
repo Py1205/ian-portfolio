@@ -28,13 +28,13 @@ export default function Home() {
             fontSize: "var(--font-size-hero)",
             lineHeight: "var(--line-height-tight)",
             letterSpacing: "-0.02em",
-            fontWeight: 500,
+            fontWeight: 450,
             color: "var(--color-text-strong)",
           }}
         >
           I&apos;m Ian. I design complex products. From concept to coded prototype.
         </h1>
-        <p className="pt-10" style={{ fontSize: "20px", lineHeight: "1.4", color: "var(--color-label)" }}>
+        <p className="pt-10" style={{ fontSize: "var(--font-size-hero-intro)", lineHeight: "1.4", color: "var(--color-label)" }}>
           Senior Product Designer focused on{" "}
           <span style={{ fontFamily: "var(--font-geist-pixel-square)", color: "var(--color-text-strong)" }}>B2B SaaS</span>
           {" "}and{" "}

@@ -22,8 +22,10 @@
 
     /* Typography */
     --font-heading: var(--font-geist-sans), system-ui, sans-serif;
-    --font-size-name: 24px;
-    --font-size-hero: 80px;
+    --font-size-name: clamp(1.125rem, calc(1rem + 0.5vw), 1.5rem);
+    --font-size-hero: clamp(2.75rem, calc(2rem + 3vw), 5rem);
+    --font-size-hero-intro: clamp(1rem, calc(0.9rem + 0.5vw), 1.25rem);
+    --font-size-section: clamp(1.125rem, calc(1.05rem + 0.25vw), 1.25rem);
     --line-height-tight: 0.975;
 
     /* Components */
@@ -118,7 +120,7 @@
   }
 
   h2 {
-    font-size: 20px;
+    font-size: var(--font-size-section);
     font-weight: 500;
     color: var(--color-label);
   }
