@@ -50,7 +50,7 @@ export default function RootLayout({
           }}
         />
         {/* Favicon — ThemeToggle updates href dynamically */}
-        <link rel="icon" id="favicon-dynamic" href={`data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#d97706"/></svg>')}`} />
+        <link rel="icon" id="favicon-dynamic" href={`data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#285872"/></svg>')}`} />
       </head>
       <body><CustomCursor />{children}</body>
     </html>

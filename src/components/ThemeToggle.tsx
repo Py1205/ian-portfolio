@@ -13,7 +13,7 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     if (!mounted) return;
-    const color = isDark ? "#f59e0b" : "#d97706";
+    const color = isDark ? "#8db9cf" : "#285872";
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="${color}"/></svg>`;
     const url = `data:image/svg+xml,${encodeURIComponent(svg)}`;
     const link = document.getElementById("favicon-dynamic") as HTMLLinkElement | null;
