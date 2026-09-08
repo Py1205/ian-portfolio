@@ -26,6 +26,11 @@
     --font-size-hero: clamp(2.75rem, calc(2rem + 3vw), 5rem);
     --font-size-hero-intro: clamp(1rem, calc(0.9rem + 0.5vw), 1.25rem);
     --font-size-section: clamp(1.125rem, calc(1.05rem + 0.25vw), 1.25rem);
+    --font-size-case-section: clamp(1.5rem, calc(1.25rem + 1vw), 2rem);
+    --font-size-case-subheading: clamp(1.0625rem, calc(1rem + 0.15vw), 1.125rem);
+    --font-size-case-body: clamp(1rem, calc(0.95rem + 0.15vw), 1.0625rem);
+    --font-size-case-key-insight: clamp(1.1875rem, calc(1.05rem + 0.4vw), 1.375rem);
+    --font-size-pagination-title: clamp(1.125rem, calc(1rem + 0.35vw), 1.375rem);
     --line-height-tight: 0.975;
 
     /* Components */
@@ -44,6 +49,7 @@
     :root {
       --grid-margin: 20px;
       --grid-columns: repeat(6, 1fr);
+      --hero-top: 160px;
     }
   }
 
@@ -66,6 +72,7 @@
       --grid-margin: 16px;
       --grid-gap: 16px;
       --grid-columns: repeat(2, 1fr);
+      --hero-top: 144px;
     }
   }
 
@@ -219,6 +226,83 @@
     @media (max-width: 500px) {
       grid-template-columns: 1fr;
       padding: 16px;
+      border-radius: 18px;
+    }
+  }
+
+  .case-study-nav-desktop {
+    display: flex;
+    @media (max-width: 1020px) {
+      display: none !important;
+    }
+  }
+
+  .case-study-meta {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    @media (max-width: 1020px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px !important;
+    }
+  }
+
+  .case-study-closing {
+    padding: 48px;
+    @media (max-width: 1020px) {
+      padding: 36px;
+    }
+    @media (max-width: 500px) {
+      padding: 24px;
+    }
+  }
+
+  .case-study-page section[id] {
+    scroll-margin-top: 32px;
+  }
+
+  .screen-carousel {
+    padding: 40px;
+    border-radius: 37px;
+    background: var(--color-screen-gallery-bg);
+    @media (max-width: 1020px) {
+      padding: 24px;
+      border-radius: 28px;
+    }
+    @media (max-width: 500px) {
+      padding: 16px;
+      border-radius: 18px;
+    }
+  }
+
+  .screen-carousel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 24px;
+    @media (max-width: 500px) {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 16px;
+    }
+  }
+
+  .project-pagination {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    @media (max-width: 500px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .project-pagination-next {
+    text-align: right;
+    @media (max-width: 500px) {
+      text-align: left;
     }
   }
 

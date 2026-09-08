@@ -49,12 +49,13 @@ export default function CaseStudyNav({ sections }: CaseStudyNavProps) {
   const handleClick = (id: string) => {
     const el = document.getElementById(id)
     if (!el) return
+    setActiveId(id)
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
     <nav
-      className="desktop-only fixed z-50 flex flex-col gap-1"
+      className="case-study-nav-desktop fixed z-50 flex flex-col gap-1"
       style={{
         top: 'var(--nav-top)',
         left: 'var(--grid-margin)',

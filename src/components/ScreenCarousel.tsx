@@ -36,12 +36,7 @@ export default function ScreenCarousel({ slides }: Props) {
 
   return (
     <div
-      className="content-col-narrow"
-      style={{
-        background: "var(--color-screen-gallery-bg)",
-        borderRadius: "37px",
-        padding: "40px",
-      }}
+      className="content-col-narrow screen-carousel"
     >
       <div style={{ position: "relative" }}>
         <img
@@ -81,15 +76,7 @@ export default function ScreenCarousel({ slides }: Props) {
         </button>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "24px",
-          paddingTop: "24px",
-        }}
-      >
+      <div className="screen-carousel-footer">
         <p
           style={{
             fontSize: "14px",

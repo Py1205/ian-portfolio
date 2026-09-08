@@ -58,7 +58,7 @@ const labelStyle: React.CSSProperties = {
 };
 
 const sectionHeadingStyle: React.CSSProperties = {
-  fontSize: "32px",
+  fontSize: "var(--font-size-case-section)",
   fontWeight: 500,
   lineHeight: 1.2,
   letterSpacing: "-0.02em",
@@ -67,7 +67,7 @@ const sectionHeadingStyle: React.CSSProperties = {
 };
 
 const subHeadingStyle: React.CSSProperties = {
-  fontSize: "18px",
+  fontSize: "var(--font-size-case-subheading)",
   fontWeight: 500,
   color: "var(--color-text-strong)",
   paddingBottom: "12px",
@@ -75,14 +75,14 @@ const subHeadingStyle: React.CSSProperties = {
 };
 
 const bodyStyle: React.CSSProperties = {
-  fontSize: "17px",
+  fontSize: "var(--font-size-case-body)",
   lineHeight: 1.7,
   color: "var(--color-text)",
   paddingBottom: "16px",
 };
 
 const keyInsightStyle: React.CSSProperties = {
-  fontSize: "22px",
+  fontSize: "var(--font-size-case-key-insight)",
   fontWeight: 500,
   lineHeight: 1.4,
   letterSpacing: "-0.01em",
@@ -126,7 +126,7 @@ export default function Disputes360Page() {
       </div>
       <CaseStudyNav sections={NAV_SECTIONS} />
 
-      <main className="page-grid content-col-narrow">
+      <main className="page-grid content-col-narrow case-study-page">
 
         {/* ── Hero ── */}
         <section
@@ -140,22 +140,22 @@ export default function Disputes360Page() {
               fontSize: "var(--font-size-hero)",
               lineHeight: "var(--line-height-tight)",
               letterSpacing: "-0.02em",
-              fontWeight: 500,
+              fontWeight: 450,
               color: "var(--color-text-strong)",
             }}
           >
             Disputes360: an AI-augmented platform built around the agent.
           </h1>
 
-          <p style={{ fontSize: "20px", lineHeight: 1.4, color: "var(--color-label)", paddingTop: "32px" }}>
+          <p style={{ fontSize: "var(--font-size-hero-intro)", lineHeight: 1.4, color: "var(--color-label)", paddingTop: "32px" }}>
             I&apos;d owned design on Marqeta&apos;s disputes product for four years before I led design on its replacement. This case study is about what the new platform became, and how AI fits inside regulated, agent-facing work.
           </p>
 
           {/* Meta */}
           <div
+            className="case-study-meta"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
               gap: "24px",
               paddingTop: "40px",
               marginTop: "40px",
@@ -464,8 +464,8 @@ export default function Disputes360Page() {
         {/* ── Closing ── */}
         <section
           id="closing"
-          className="content-col-narrow"
-          style={{ padding: "48px", background: "var(--color-toggle-bg)", borderRadius: "var(--radius-sm)" }}
+          className="content-col-narrow case-study-closing"
+          style={{ background: "var(--color-toggle-bg)", borderRadius: "var(--radius-sm)" }}
         >
           <p style={{ ...labelStyle, paddingBottom: "24px" }}>Closing</p>
           <p style={{ fontSize: "20px", fontWeight: 500, lineHeight: 1.6, color: "var(--color-text)", letterSpacing: "-0.01em", paddingBottom: "16px" }}>

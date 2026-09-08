@@ -11,7 +11,7 @@ const labelStyle: React.CSSProperties = {
 };
 
 const titleStyle: React.CSSProperties = {
-  fontSize: "22px",
+  fontSize: "var(--font-size-pagination-title)",
   fontFamily: "var(--font-heading)",
   fontWeight: 500,
   letterSpacing: "-0.01em",
@@ -28,20 +28,17 @@ export default function ProjectPagination({ currentSlug }: { currentSlug: string
 
   return (
     <section
-      className="content-col-narrow"
+      className="content-col-narrow project-pagination"
       style={{
         paddingTop: "var(--section-gap)",
         paddingBottom: "var(--section-gap)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "24px",
       }}
     >
       <a href={prev.href} className="group block">
         <p style={labelStyle}>← Previous</p>
         <p className="card-title" style={titleStyle}>{prev.title}</p>
       </a>
-      <a href={next.href} className="group block" style={{ textAlign: "right" }}>
+      <a href={next.href} className="group block project-pagination-next">
         <p style={labelStyle}>Next →</p>
         <p className="card-title" style={titleStyle}>{next.title}</p>
       </a>
