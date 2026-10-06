@@ -1,22 +1,21 @@
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
-  { label: "How I work", href: "/how-i-work" },
   { label: "About", href: "/about" },
-  { label: "Resume", href: "/resume" },
+  { label: "Resume", href: "/Ian_Pan_Resume.pdf", external: true },
 ];
 
 export const siteConfig = {
   name: "Ian Pan",
   title: "Senior Product Designer",
   intro:
-    "I\u2019m Ian. I design complex products. From concept to coded prototype.",
+    "I\u2019m Ian. I make complex products easier to use. From concept to coded prototype.",
   philosophy:
-    "I design with logic, scalability, and usability at the core. My approach is rooted in structured problem-solving \u2014 ensuring seamless workflows, intuitive interactions, and long-term adaptability. I see design as more than visuals; it\u2019s a bridge between users, business, and technology, shaping meaningful experiences that drive impact.",
+    "I start by understanding the rules, constraints, and decisions behind a workflow. I build coded prototypes to test how those pieces work together. I look for where people hesitate, what they need to know, and whether the next step is clear.",
   contact:
     "I\u2019d love to connect! Whether you have a project in mind, need more details, or just want to chat, feel free to reach out.",
   subtitle:
-    "Senior Product Designer focused on B2B SaaS and AI products.",
+    "Senior Product Designer at Marqeta, working across fintech, B2B SaaS, and AI-assisted workflows. Based in the San Francisco Bay Area.",
   email: "ianp.ux@gmail.com",
   linkedin: "https://linkedin.com/in/ianpan",
 };
@@ -32,8 +31,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Disputes 360",
-    description: "SaaS platform design for AI-augmented disputes operations.",
+    title: "Disputes360",
+    description: "Case management and AI-assisted evidence review for dispute operations.",
     category: "B2B SaaS · Fintech",
     tags: ["SaaS", "Fintech"],
     slug: "disputes360",
@@ -41,7 +40,7 @@ export const projects: Project[] = [
   },
   {
     title: "Uber Pro Card UK",
-    description: "End-to-end banking experience for 300,000 drivers and couriers: wallet, transactions, disputes, cashback, and more.",
+    description: "Wallet, transaction history, and dispute reporting for UK drivers and couriers.",
     category: "Fintech · Mobile",
     tags: ["Fintech", "Mobile", "B2B2C"],
     slug: "autobahn",
@@ -49,35 +48,19 @@ export const projects: Project[] = [
   },
   {
     title: "Yirental",
-    description: "Reframing a rental search experience around user intent, not UI. Satisfaction 2.8 → 4.7.",
+    description: "Mobile rental search, with clearer entry points, more detailed filters, and easier-to-scan listings.",
     category: "Research · Consumer",
     tags: ["Research", "Mobile", "Consumer"],
     slug: "yirental",
     href: "/work/yirental",
   },
   {
-    title: "Phonewagon",
-    description: "A cross-platform SaaS design system, defended at the component level.",
+    title: "PhoneWagon",
+    description: "Shared visual foundations, reusable components, and usage guidelines for a call-tracking product.",
     category: "Design Systems",
     tags: ["Design Systems", "SaaS"],
     slug: "phonewagon",
     href: "/work/phonewagon",
-  },
-  {
-    title: "Design System",
-    description: "Building a scalable, token-based component library from the ground up.",
-    category: "Design Systems",
-    tags: ["Design Systems", "Tokens"],
-    slug: "design-system",
-    href: "/work/design-system",
-  },
-  {
-    title: "Consumer Mobile App",
-    description: "B2B2C experience spanning card management across iOS and Android.",
-    category: "Mobile · B2B2C",
-    tags: ["Mobile", "B2B2C"],
-    slug: "consumer-mobile-app",
-    href: "/work/consumer-mobile-app",
   },
 ];
 

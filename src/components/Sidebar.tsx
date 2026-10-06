@@ -17,6 +17,8 @@ export default function Sidebar({ activeHref }: { activeHref: string }) {
           <a
             key={link.label}
             href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
             className={`w-fit ${link.href === activeHref ? "nav-link-active" : "nav-link"}`}
           >
             {link.label}

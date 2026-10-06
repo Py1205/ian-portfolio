@@ -32,14 +32,14 @@ export default function Home() {
             color: "var(--color-text-strong)",
           }}
         >
-          I&apos;m Ian. I design complex products. From concept to coded prototype.
+          I&apos;m Ian. I make complex products easier to use. From concept to coded prototype.
         </h1>
         <p className="pt-10" style={{ fontSize: "var(--font-size-hero-intro)", lineHeight: "1.4", color: "var(--color-label)" }}>
-          Senior Product Designer focused on{" "}
+          Senior Product Designer at Marqeta, working across fintech,{" "}
           <span style={{ fontFamily: "var(--font-geist-pixel-square)", color: "var(--color-text-strong)" }}>B2B SaaS</span>
-          {" "}and{" "}
-          <span style={{ fontFamily: "var(--font-geist-pixel-square)", color: "var(--color-text-strong)" }}>AI products</span>
-          .{" "}Currently at Marqeta in SF Bay Area.
+          , and{" "}
+          <span style={{ fontFamily: "var(--font-geist-pixel-square)", color: "var(--color-text-strong)" }}>AI-assisted workflows</span>
+          .{" "}Based in the San Francisco Bay Area.
         </p>
       </section>
 

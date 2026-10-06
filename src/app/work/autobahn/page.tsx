@@ -1,520 +1,109 @@
-import BackButton from "@/components/BackButton";
-import ThemeToggle from "@/components/ThemeToggle";
-import Expandable from "@/components/Expandable";
-import CaseStudyNav from "@/components/CaseStudyNav";
-import ProjectPagination from "@/components/ProjectPagination";
-import ScreenShowcase from "@/components/ScreenShowcase";
+import Link from 'next/link';
+import BackButton from '@/components/BackButton';
+import ThemeToggle from '@/components/ThemeToggle';
+import CaseStudyNav from '@/components/CaseStudyNav';
+import ProjectPagination from '@/components/ProjectPagination';
+import styles from './case-study.module.css';
 
-const NAV_SECTIONS = [
-  { id: "overview", label: "Overview" },
-  { id: "the-project", label: "The Project" },
-  { id: "wallet", label: "Wallet" },
-  { id: "transactions", label: "Transactions" },
-  { id: "disputes", label: "Disputes" },
-  { id: "outcomes", label: "Outcomes" },
-  { id: "reflection", label: "Reflection" },
+const sections = [
+ {id:'overview',label:'Overview'}, {id:'the-project',label:'My role'},
+ {id:'wallet',label:'01 · Wallet'}, {id:'transactions',label:'02 · Transactions'},
+ {id:'disputes',label:'03 · Disputes'}, {id:'outcomes',label:'Shipped'}
 ];
-
-const labelStyle: React.CSSProperties = {
-  fontSize: "14px",
-  fontWeight: 400,
-  fontFamily: "var(--font-geist-mono), monospace",
-  letterSpacing: "0.06em",
-  textTransform: "uppercase",
-  color: "var(--color-text-muted)",
-  paddingBottom: "16px",
+type Shot = [string, string];
+const galleries: Record<string, Shot[]> = {
+ overview: [['current','Manage money'],['purchase','Review activity'],['first-question','Report a problem']],
+ comparison: [['early-current','Dual accounts · Current'],['early-savings','Dual accounts · Savings'],['early-card','Card-centric home']],
+ accounts: [['current','Current'],['savings','Savings']],
+ 'first-time': [['virtual-card','First-time user · Virtual card'],['activate-card','First-time user · Physical card activation']],
+ activity: [['activity','Transaction activity · Pending, money in and money out']],
+ details: [['purchase','Purchase · MVP'],['received','External transfer · Money received'],['restricted','Purchase · Restricted merchant category']],
+ pending: [['transfer-pending','External transfer · Pending compliance review']],
+ unreleased: [['purchase','MVP'],['merchant-future','Merchant logo and map · Unreleased design']],
+ atm: [['atm-amount','ATM questionnaire · Partial amount'],['atm-uploading','Supporting document · Uploading'],['atm-uploaded','Supporting document · Upload complete'],['atm-review','ATM questionnaire · Review before submission']],
+ primer: [['primer','Dispute Primer'],['first-question','Purchase questionnaire · First question']],
+ status: [['disputed','Original transaction · Dispute filed'],['complete','Original transaction · Check email for details']]
 };
-
-const sectionHeadingStyle: React.CSSProperties = {
-  fontSize: "32px",
-  fontWeight: 500,
-  lineHeight: 1.2,
-  letterSpacing: "-0.02em",
-  color: "var(--color-text-strong)",
-  paddingBottom: "24px",
-};
-
-const subHeadingStyle: React.CSSProperties = {
-  fontSize: "18px",
-  fontWeight: 500,
-  color: "var(--color-text-strong)",
-  paddingBottom: "12px",
-  paddingTop: "40px",
-};
-
-const bodyStyle: React.CSSProperties = {
-  fontSize: "17px",
-  lineHeight: 1.7,
-  color: "var(--color-text)",
-  paddingBottom: "16px",
-};
-
-const keyInsightStyle: React.CSSProperties = {
-  fontSize: "22px",
-  fontWeight: 500,
-  lineHeight: 1.4,
-  letterSpacing: "-0.01em",
-  color: "var(--color-text-strong)",
-  paddingBottom: "24px",
-};
-
-const imgPlaceholder = (caption: string) => (
-  <div
-    style={{
-      aspectRatio: "16 / 9",
-      background: "var(--color-border-strong)",
-      borderRadius: "var(--radius-sm)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "24px",
-    }}
-  >
-    <p style={{ fontSize: "13px", color: "var(--color-text-muted)", textAlign: "center", fontStyle: "italic" }}>
-      {caption}
-    </p>
-  </div>
-);
-
-export default function AutobahnPage() {
-  return (
-    <>
-      <div className="fixed z-[300]" style={{ top: "var(--nav-top)", left: "var(--grid-margin)" }}>
-        <BackButton />
-      </div>
-      <div className="fixed z-[300]" style={{ bottom: "var(--nav-top)", left: "var(--grid-margin)" }}>
-        <ThemeToggle />
-      </div>
-      <CaseStudyNav sections={NAV_SECTIONS} />
-
-      <main className="page-grid content-col-narrow">
-
-        {/* ── Hero ── */}
-        <section
-          id="overview"
-          className="content-col-narrow"
-          style={{ paddingTop: "var(--hero-top)", paddingBottom: "var(--section-gap)" }}
-        >
-          <p style={labelStyle}>Case Study</p>
-          <h1
-            style={{
-              fontSize: "var(--font-size-hero)",
-              lineHeight: "var(--line-height-tight)",
-              letterSpacing: "-0.02em",
-              fontWeight: 500,
-              color: "var(--color-text-strong)",
-            }}
-          >
-            Designing the banking app behind Uber Pro Card UK
-          </h1>
-
-          {/* Meta */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: "24px",
-              paddingTop: "40px",
-              marginTop: "40px",
-              borderTop: "0.5px solid var(--color-border-strong)",
-            }}
-          >
-            {[
-              { label: "Role", value: "Senior Product Designer" },
-              { label: "Timeline", value: "Feb 2025 – Apr 2025" },
-              { label: "Team", value: "Product Managers, Engineers, Ops, Legal & Compliance, Uber UK" },
-              { label: "Skills", value: "Information Architecture, Systems Thinking, Problem Reframing" },
-            ].map(({ label, value }) => (
-              <div key={label}>
-                <p style={{ fontSize: "14px", fontWeight: 400, fontFamily: "var(--font-geist-mono), monospace", letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-text-muted)", paddingBottom: "8px" }}>
-                  {label}
-                </p>
-                <p style={bodyStyle}>
-                  {value}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Cover images */}
-        <ScreenShowcase columns={3}>
-          <img src="/work/autobahn/wallet.avif" alt="Autobahn wallet home screen" />
-          <img src="/work/autobahn/transactions.avif" alt="Transaction details screen" />
-          <img src="/work/autobahn/disputes.avif" alt="Dispute this transaction screen" />
-        </ScreenShowcase>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── The Project ── */}
-        <section id="the-project" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>The Project</p>
-          <h2 style={sectionHeadingStyle}>Two companies, one app, three hundred thousand earners</h2>
-
-          <p style={bodyStyle}>
-            Uber wanted to give every UK driver and courier a real banking experience: instant payouts, a debit card, savings, cashback, the whole thing. Marqeta designed, built, and hosted the app. Uber put their brand on it and rolled it out to 300,000 earners.
-          </p>
-          <p style={bodyStyle}>
-            It was also Marqeta&apos;s first real proof that we could ship a white-label platform. So every design decision had to do two jobs: work for the earner today, and hold up for customers we hadn&apos;t even signed yet.
-          </p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", paddingTop: "32px" }}>
-            <div>
-              <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-text-muted)", paddingBottom: "10px" }}>
-                What I owned
-              </p>
-              <p style={{ fontSize: "15px", color: "var(--color-text)", lineHeight: 1.6 }}>
-                Wallet (Home), Transactions (list + details), Disputes (self-service), and Cashback/Rewards. The stuff earners actually open the app for.
-              </p>
-            </div>
-            <div>
-              <p style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-text-muted)", paddingBottom: "10px" }}>
-                Constraints
-              </p>
-              <p style={{ fontSize: "15px", color: "var(--color-text)", lineHeight: 1.6 }}>
-                Two apps connected via deep links and SSO. UK financial rules (PSD2). Uber&apos;s brand review. Product workshop in March, testing in May, launch in September.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Transition ── */}
-        <section
-          className="content-col-narrow"
-          style={{
-            padding: "48px",
-            background: "var(--color-toggle-bg)",
-            borderRadius: "var(--radius-sm)",
-          }}
-        >
-          <p style={{ fontSize: "20px", fontWeight: 500, lineHeight: 1.6, color: "var(--color-text)", letterSpacing: "-0.01em" }}>
-            When an Uber driver opens this app, they see a balance, some transactions, and a way to report a problem. They don&apos;t see the months of work underneath. Here are three stories about what it took to make it look that easy.
-          </p>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Story 1: Wallet ── */}
-        <section id="wallet" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Story 1</p>
-          <h2 style={sectionHeadingStyle}>Wallet: &quot;What is this product, actually?&quot;</h2>
-
-          <p style={keyInsightStyle}>
-            The home screen looks like a layout question. It&apos;s actually a question about how earners should think about the whole product.
-          </p>
-
-          <p style={bodyStyle}>
-            The wallet is the first thing earners see, every time. Before drawing a single screen, I had to answer one question: how should they think about their money inside this app? The answer would shape the IA, the navigation, and how far the product could grow later.
-          </p>
-
-          {imgPlaceholder("Side-by-side comparison of Version 1a, Version 1b, and Version 2 — the three Wallet explorations")}
-
-          <p style={{ ...subHeadingStyle, paddingTop: "32px" }}>Three directions explored</p>
-          <p style={bodyStyle}>
-            We tried three different structures. Each one said something different about what this app actually <em>is</em>.
-          </p>
-
-          <Expandable label="Read the details on each direction">
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-              <div>
-                <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "8px" }}>Version 1a — Dual Accounts (tabs)</p>
-                <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>Current and Savings as two explicit accounts, switched with tabs. Card management on its own page. Familiar from any banking app, but earners have to figure out how the accounts and the card connect.</p>
-              </div>
-              <div>
-                <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "8px" }}>Version 1b — Dual Accounts (swipe)</p>
-                <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>Same idea, different gesture: swipe between accounts. Smoother in motion, but swipe can feel unclear. You&apos;re not sure where you are.</p>
-              </div>
-              <div>
-                <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "8px" }}>Version 2 — Card-centric Home</p>
-                <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>The card is the home screen. Balance, card art, and activity in one view. Simplest to grasp, but it boxes the product in. Once earners think of it as &quot;just a card,&quot; it&apos;s hard to grow into savings, credit, or anything bigger.</p>
-              </div>
-              <div>
-                <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "8px" }}>The direction we didn&apos;t ship</p>
-                <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>We also looked at hiding savings entirely, with one visible balance and funds split behind the scenes. Easiest for the user, but it felt opaque and the backend got complicated. We dropped it.</p>
-              </div>
-            </div>
-          </Expandable>
-
-          <p style={subHeadingStyle}>The decision</p>
-          <p style={bodyStyle}>
-            We went with 1a: dual accounts, explicit tabs. Three reasons. Uber&apos;s roadmap needed savings front and center as an engagement hook. Marqeta&apos;s architecture handled it cleanly. And tabs gave us an IA that could grow. Credit, business accounts, whatever comes next, all without restructuring the app.
-          </p>
-          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            This was a foundation decision. Transactions, cashback, navigation. All of it would follow from this one call.
-          </p>
-
-          <div style={{ paddingTop: "32px" }}>
-            {imgPlaceholder("First-time user home — contextual action cards (\"Use your virtual card,\" \"Activate your physical card\")")}
-          </div>
-
-          <p style={subHeadingStyle}>A home screen that adapts</p>
-          <p style={bodyStyle}>
-            <strong>First-time users</strong> see a guided setup. Action cards on the home screen suggest the next step and reveal features one at a time. If the physical card sits unactivated for three days, the prompt gets louder. There&apos;s no separate onboarding flow. The home screen does the teaching.
-          </p>
-          <p style={bodyStyle}>
-            <strong>Returning users</strong> see everything at once: balance, transfer shortcut, recent activity, cashback tile. All of it answers the question earners ask first: <em>how much do I have, and what just happened?</em>
-          </p>
-
-          <div style={{ paddingTop: "8px" }}>
-            {imgPlaceholder("Returning user home — Current account with activity and cashback tile, Savings account with interest earned")}
-          </div>
-
-          <p style={subHeadingStyle}>Built for white-label reuse</p>
-          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            The spec layer used local variables for theming. Colors, type, card art, account labels: all swappable without touching structure. Account switching worked with tap or swipe, configurable per deployment. Onboarding cards, cashback tiles, and action patterns were modular, toggleable per program. The goal was simple: feel like an Uber product to earners, stay a Marqeta product under the hood.
-          </p>
-
-          <div style={{ paddingTop: "32px" }}>
-            {imgPlaceholder("Specs — local variables, account switching mechanics, onboarding logic, cashback tile states")}
-          </div>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Story 2: Transactions ── */}
-        <section id="transactions" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Story 2</p>
-          <h2 style={sectionHeadingStyle}>Transactions: &quot;One list, forty scenarios&quot;</h2>
-
-          <p style={keyInsightStyle}>
-            The real work here was building a category system and a flexible template that could absorb forty-plus scenarios, including the ones we hadn&apos;t thought of yet. The detail screen was the easy part.
-          </p>
-
-          <p style={bodyStyle}>
-            Every interaction with money lands in one list. Ride payouts, purchases, ATMs, cashback, transfers, fees. They&apos;re all &quot;transactions,&quot; but each one carries different information and different stakes. The design had to hold them together without flattening them or splintering into chaos.
-          </p>
-
-          <p style={subHeadingStyle}>Defining the taxonomy</p>
-          <p style={bodyStyle}>
-            Before any screens, I built the category system: about twenty types, each with its own icon. The set sat at the intersection of UK banking norms, what Uber&apos;s backend actually sends, what Marqeta categorizes, and what makes sense to an earner who doesn&apos;t speak finance. Uber-specific types (payouts, tips) get branded icons. Generic banking types (ATMs, transfers) stay neutral. Green for money in, black for money out.
-          </p>
-
-          {imgPlaceholder("Icon mapping — full taxonomy of ~20 transaction types with icons")}
-
-          <p style={subHeadingStyle}>One template, many contexts</p>
-          <p style={bodyStyle}>
-            I designed a flexible detail template. Amount at the top. A lead visual (icon or merchant logo). A category label. An optional banner. Then structured metadata. The banner is where the magic is. One slot that holds totally different content depending on the transaction type, without changing the page underneath.
-          </p>
-
-          <div style={{ paddingTop: "8px", paddingBottom: "24px" }}>
-            {imgPlaceholder("4–5 transaction details side by side — ride payout, fuel purchase with cashback, declined gambling transaction, remittance with deep link")}
-          </div>
-
-          <Expandable label="See how the template adapts across types">
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-              {[
-                { title: "Ride payout", body: "The simplest case. Amount, Uber icon, date, source, type. The earner just wants to know they got paid." },
-                { title: "Fuel purchase", body: "Merchant name, \"Fuel\" tag, and a banner pointing out it may qualify for cashback (with a link to the rewards summary). \"Dispute this transaction\" at the bottom. A routine purchase becomes a doorway into the rewards system." },
-                { title: "Declined gambling transaction", body: "The banner turns into a warning explaining why it was declined (restricted merchant category), with a \"Learn more\" page behind it. The earner gets a push notification that deep-links straight to this detail. A confusing moment becomes a clear one, and that builds trust." },
-                { title: "International remittance", body: "The banner says \"Having troubles?\" and deep-links to the Uber Driver app, where the full remittance details live. The detail page knows its own limits and points the earner where they actually need to go." },
-              ].map(({ title, body }) => (
-                <div key={title}>
-                  <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "8px" }}>{title}</p>
-                  <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>{body}</p>
-                </div>
-              ))}
-            </div>
-          </Expandable>
-
-          <p style={subHeadingStyle}>Designed for evolution</p>
-          <p style={bodyStyle}>
-            For MVP, the lead visual is an icon. But the template was built so the same slot could fit a merchant logo or a map pin later, no layout change needed. Post-MVP, a purchase at Tesco shows the Tesco logo and a map pin. Richer, easier to scan, zero structural redesign.
-          </p>
-
-          {imgPlaceholder("MVP detail (icon) vs Post-MVP detail (merchant logo + map) — same template, richer data")}
-
-          <p style={subHeadingStyle}>Forty-plus scenarios, one system</p>
-          <p style={bodyStyle}>
-            The final system covers over forty variants. Five payout types. Nine purchase states (pending, declined, refunded, disputed, restricted MCC, foreign currency). Seven ATM variants. Internal and external transfers. Open banking. Cashback with reversals. Interest. Remittances. All on the same template.
-          </p>
-
-          {imgPlaceholder("Full variant matrix — zoomed out to show the scale across Payouts, Purchases, ATM, Transfers, Cashback")}
-
-          <p style={{ ...bodyStyle, paddingTop: "24px", paddingBottom: 0 }}>
-            One system, forty scenarios, with room for the ones nobody had defined yet.
-          </p>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Story 3: Disputes ── */}
-        <section id="disputes" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Story 3</p>
-          <h2 style={sectionHeadingStyle}>Disputes: &quot;Reframing the problem&quot;</h2>
-
-          <p style={keyInsightStyle}>
-            The team&apos;s first instinct was a dynamic progress bar. The real fix was changing what we were trying to solve.
-          </p>
-
-          <p style={bodyStyle}>
-            When something goes wrong with a transaction, earners need to report it from the app. Self-service, no phone call. The backend was already there in Marqeta&apos;s UXT SDK, but the questionnaire is dynamic and branching. Over sixteen flows. Content updated by Mastercard twice a year.
-          </p>
-
-          {imgPlaceholder("Disputes flow overview — entry point, primer, routing logic, branching paths, convergence at confirmation")}
-
-          <p style={subHeadingStyle}>The progress bar that wasn&apos;t</p>
-          <p style={bodyStyle}>
-            The first instinct was a dynamic progress bar that would adjust as questions branched. We sat down with engineering, looked at the coordination cost, and realized two things. The work was expensive. And we were solving the wrong problem.
-          </p>
-          <p style={bodyStyle}>
-            Earners aren&apos;t anxious about being on step 3 of 5. They&apos;re anxious about whether this takes thirty seconds or thirty minutes. So we set expectations instead of showing progress.
-          </p>
-
-          <p style={subHeadingStyle}>The Dispute Primer</p>
-          <p style={bodyStyle}>
-            Instead of real-time tracking, we built an entry page that sets expectations up front. Tap &quot;Dispute this transaction&quot; and you see: &quot;Something&apos;s not right? We&apos;re here to help.&quot; The page tells you it&apos;s a short questionnaire (usually quick, sometimes a few minutes) and what to have ready. Cheap to build, solves the psychological problem, works for all sixteen flows.
-          </p>
-
-          {imgPlaceholder("Dispute Primer — \"Something's not right?\" — followed by first questionnaire screen")}
-
-          <p style={subHeadingStyle}>A scalable pattern, not sixteen designs</p>
-          <p style={bodyStyle}>
-            Sixteen-plus flows, content updated twice a year. Designing each one by hand would never hold up. Instead, I built a reusable set of form components: text inputs, radio groups, file uploaders, info cards, confirmation summaries. They compose in any order based on backend logic. New dispute types ship without new design. Content updates flow through existing patterns. And the same library works for future white-label customers on different card networks.
-          </p>
-
-          <Expandable label="See example flows compared">
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-              {[
-                { title: "Fraudulent transaction", body: "The longest flow. Questionnaire, replacement card order, biometric verification, and resolution states for both won and lost disputes." },
-                { title: "Incorrect amount", body: "A medium-length flow. Different branches of questions, document upload for receipts, resolution tracking." },
-                { title: "ATM withdrawal", body: "Its own questionnaire path. ATM-specific details like location, amount expected vs received." },
-                { title: "Non-network dispute", body: "The shortest path. It routes straight to a support contact page instead of the questionnaire. Not everything can be self-service." },
-              ].map(({ title, body }) => (
-                <div key={title}>
-                  <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "8px" }}>{title}</p>
-                  <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>{body}</p>
-                </div>
-              ))}
-            </div>
-          </Expandable>
-
-          <div style={{ paddingTop: "32px" }}>
-            {imgPlaceholder("3–4 dispute flows contrasted — showing different lengths and components but same pattern system")}
-          </div>
-
-          <p style={subHeadingStyle}>Closing the loop</p>
-          <p style={{ ...bodyStyle, paddingBottom: 0 }}>
-            Disputes loop back into the transaction system. File one, and the transaction detail picks up a &quot;Transaction disputed&quot; banner. Resolve it, and the outcome shows up there too. Same banner slot that holds cashback notices and MCC warnings. One pattern, doing multiple jobs across the app.
-          </p>
-
-          <div style={{ paddingTop: "32px" }}>
-            {imgPlaceholder("Transaction detail with \"Transaction disputed\" → same transaction after \"Dispute complete\"")}
-          </div>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Common Thread ── */}
-        <section
-          className="content-col-narrow"
-          style={{ padding: "48px", background: "var(--color-toggle-bg)", borderRadius: "var(--radius-sm)" }}
-        >
-          <p style={{ ...labelStyle, paddingBottom: "24px" }}>The Common Thread</p>
-          <p style={{ fontSize: "17px", color: "var(--color-text)", lineHeight: 1.7, paddingBottom: "16px" }}>
-            Each of these looked like a UI problem on the surface, but they were all structural underneath. The wallet was a mental-model question. The transactions list was a taxonomy and a template system. The dispute flow was a scalable-pattern problem.
-          </p>
-          <p style={{ fontSize: "17px", color: "var(--color-text)", lineHeight: 1.7 }}>
-            The thread running through all three: absorb the complexity early (in the IA, the taxonomy, the components) so the earner sees something simple, and the team gets something they can actually maintain.
-          </p>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Outcomes ── */}
-        <section id="outcomes" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Outcomes</p>
-          <h2 style={sectionHeadingStyle}>What shipped and what it proved</h2>
-
-          <p style={bodyStyle}>
-            Autobahn launched as Marqeta&apos;s first white-label app, serving Uber&apos;s UK earners. The patterns held up under real production traffic, and they were built to be reused.
-          </p>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", paddingTop: "8px" }}>
-            {[
-              { number: "1,036 TPS", desc: "Peak transaction throughput, UX patterns holding without reliability risk" },
-              { number: "99.997%", desc: "Transaction success rate at peak traffic" },
-              { number: "32% YoY", desc: "Transaction volume growth supported by the platform" },
-              { number: "39% YoY", desc: "API TPS growth, white-label architecture scaling cleanly" },
-            ].map(({ number, desc }) => (
-              <div
-                key={number}
-                style={{ background: "var(--color-toggle-bg)", borderRadius: "var(--radius-sm)", padding: "28px 24px" }}
-              >
-                <p style={{ fontSize: "28px", fontWeight: 600, letterSpacing: "-0.02em", color: "var(--color-text-strong)", paddingBottom: "8px" }}>
-                  {number}
-                </p>
-                <p style={{ fontSize: "14px", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
-                  {desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p style={{ ...bodyStyle, paddingTop: "32px", paddingBottom: 0 }}>
-            The numbers aside, the bigger thing this project proved was that Marqeta could deliver a full cardholder experience, not just plumbing, at a bar high enough for a partner like Uber. Those patterns became the foundation for how Marqeta does white-label work going forward.
-          </p>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Reflection ── */}
-        <section id="reflection" className="content-col-narrow" style={{ paddingTop: "var(--section-gap)", paddingBottom: "var(--section-gap)" }}>
-          <p style={labelStyle}>Reflection</p>
-          <h2 style={sectionHeadingStyle}>What I&apos;d do differently</h2>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            {[
-              {
-                title: "Get into product framing earlier",
-                body: "Some of the structural calls would've come out better if design had been in the room during initial scoping with Uber. Next time I'd push to be there from the first workshop.",
-              },
-              {
-                title: "Share frameworks more broadly, sooner",
-                body: "The taxonomy, the template, the component library. All of it was useful beyond my team. Sharing them earlier and more openly would've spread the impact and caught blind spots faster.",
-              },
-              {
-                title: "Invest more in the long-horizon vision",
-                body: "Most of my energy went into shipping the MVP well. Looking back, I wish I'd spent more time on the future state. Where is this product two or three quarters from now?",
-              },
-            ].map(({ title, body }) => (
-              <div
-                key={title}
-                style={{ paddingLeft: "20px", borderLeft: "2px solid var(--color-border-strong)" }}
-              >
-                <p style={{ fontSize: "16px", fontWeight: 500, color: "var(--color-text-strong)", paddingBottom: "6px" }}>{title}</p>
-                <p style={{ fontSize: "16px", color: "var(--color-text)", lineHeight: 1.7 }}>{body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* ── Prev / Next ── */}
-        <ProjectPagination currentSlug="autobahn" />
-
-        {/* ── Divider ── */}
-        <div className="content-col-narrow" style={{ height: "var(--divider-width)", background: "var(--color-border)" }} />
-
-        {/* Footer */}
-        <footer
-          className="text-base content-col-narrow"
-          style={{ paddingTop: "var(--header-pad)", paddingBottom: "var(--grid-margin)", color: "var(--color-text-muted)" }}
-        >
-          <a href="/work" className="hover:opacity-60 transition-opacity" style={{ color: "var(--color-text-muted)" }}>
-            ← Back to work
-          </a>
-        </footer>
-
-      </main>
-    </>
-  );
+function Gallery({name}: {name:string}) {
+ const items=galleries[name];
+ const grid=<div className={[styles.gallery, name==='overview'?styles.preview:'', name==='first-time'?styles.compact:'',items.length===1?styles.single:''].join(' ')}>
+ {items.map(([file,label])=><figure key={file}>
+ <div className={styles.placeholder} aria-label={`Image placeholder: ${label}`}><span>Image placeholder</span></div>
+ <figcaption>{label}</figcaption></figure>)}
+ </div>;
+ return name==='unreleased'?<details className={styles.supplement}><summary>Merchant details: MVP and unreleased direction</summary>{grid}</details>:grid;
 }
+export default function AutobahnPage(){return <>
+ <div className="fixed z-[300]" style={{top:'var(--nav-top)',left:'var(--grid-margin)'}}><BackButton /></div>
+ <div className="fixed z-[300]" style={{bottom:'var(--nav-top)',left:'var(--grid-margin)'}}><ThemeToggle /></div>
+ <CaseStudyNav sections={sections} />
+ <main className={`page-grid ${styles.page}`}>
+ <header id="overview" className={`${styles.content} ${styles.hero}`}>
+ <h1>{"Uber Pro Card UK"}</h1><p className={styles.intro}>{"Helping UK drivers and couriers manage earnings, track spending, and report transaction problems."}</p>
+ <dl className={styles.meta}><div><dt>{"Role"}</dt><dd>{"Senior Product Designer at Marqeta"}</dd></div><div><dt>{"Scope"}</dt><dd>{"Wallet, Transactions and Disputes"}</dd></div><div><dt>{"Timeline"}</dt><dd>{"January 2025 through development and launch"}</dd></div><div><dt>{"Team"}</dt><dd>{"Approximately six designers, working with Product, Engineering and Uber"}</dd></div></dl>
+ </header>
+ <div className={styles.content}><Gallery name="overview" /></div>
+
+<section id="the-project" className={`${styles.content} ${styles.section}`}>
+<h2>{"The product and my role"}</h2>
+<p>{"Uber Pro Card UK is a separate app connected to the Uber Driver app. Uber earnings arrive in the account, and users can spend with their debit card or move money into interest-bearing savings. Uber wanted the product to become an option for everyday spending and saving."}</p>
+<p>{"Marqeta designed and built the app under Uber’s brand, using its existing SDKs as the foundation. Those SDKs provided underlying capabilities; our team designed how users would access and interact with them in the Uber app."}</p>
+<p>{"I was one of approximately six designers at Marqeta working on the project. My main areas covered three everyday tasks: managing money in Wallet, reviewing activity in Transactions, and reporting problems through Disputes."}</p>
+<p>{"I joined the initial brainstorming in January. As the product direction and responsibilities settled in March, I led the flows, screens and interactions for these areas through multiple iterations. Designs were largely locked in May, and I continued working with engineering on implementation updates and visual QA through delivery."}</p>
+</section>
+<section id="wallet" className={`${styles.content} ${styles.section}`}>
+<h2 className={styles.chapter}><span className={styles.number}>01</span>{"Wallet"}</h2>
+<h3>{"Defining how spending and savings fit together"}</h3>
+<p>{"The team wanted to offer savings, but had not settled on how to present it alongside the card and spending balance."}</p>
+<p>{"I explored several ways to organise the Wallet. We brought two main directions to Uber:"}</p>
+<ul><li>{"Dual accounts: Current and Savings appear as separate accounts, with card management on its own page."}</li><li>{"Card-centric home: The card, balance and card controls sit together on the home screen, with Savings available alongside them."}</li></ul>
+<p>{"The comparison made the implications of each direction explicit. A card-centric home closely reflected the initial card offering. Separate accounts gave spending and savings distinct places in the product, while requiring users to understand how the card connected to Current."}</p>
+<Gallery name="comparison" />
+<p>{"Marqeta recommended the dual-account direction, which I supported. We presented the alternatives and our reasoning to Uber, who chose the explicit Current and Savings structure. It fit their intention for the product to support both everyday spending and personal savings."}</p>
+<p>{"I developed that direction through further visual and interaction iterations. Users can switch accounts by tapping the tabs or swiping between pages."}</p>
+<p>{"Current puts the spending balance, transfers and recent transactions up front. Savings shows the balance alongside the interest rate, interest earned and an action to add money. For new users, contextual cards prompt them to start using their virtual card or activate their physical one."}</p>
+<Gallery name="accounts" />
+<Gallery name="first-time" />
+</section>
+<section id="transactions" className={`${styles.content} ${styles.section}`}>
+<h2 className={styles.chapter}><span className={styles.number}>02</span>{"Transactions"}</h2>
+<h3>{"Helping users understand their money movement"}</h3>
+<p>{"Transactions gives users a record of money entering and leaving their account. It brings Uber payouts, purchases, transfers, ATM activity, fees, interest and refunds into one list."}</p>
+<p>{"I designed the icon mapping, list items and detail layouts together. Uber payouts share a branded icon. Other transactions use category icons, with names, labels and signed amounts providing further context. Pending transactions appear separately, and users can filter by money in or money out."}</p>
+<Gallery name="activity" />
+<p>{"The available API fields differed by transaction type. I used those fields, banking references and my own design judgement to decide what each detail page should show and how to prioritise it."}</p>
+<p>{"A purchase identifies the merchant, category and card used. An external transfer shows where the money came from and where it went. Foreign-currency transactions add the original amount and exchange markup. These details sit within a shared hierarchy, with the amount and transaction identity first."}</p>
+<p>{"The structure also accommodates changes in status. A pending purchase explains that the final amount may change. A restricted purchase explains the reason for the decline and offers more information. Disputed transactions show their current dispute status."}</p>
+<Gallery name="details" />
+<p>{"Engineering capacity shaped the first release. We had explored richer merchant details, including logos and maps, but deferred them. The MVP retained the core transaction details and relevant actions. The richer merchant experience remains an unreleased design direction."}</p>
+<p>{"I continued updating the design as requirements developed. In August, I followed up on a requirement for external transfers held for compliance review, adding the pending presentation and processing message to the transfer detail."}</p>
+<Gallery name="pending" />
+<Gallery name="unreleased" />
+</section>
+<section id="disputes" className={`${styles.content} ${styles.section}`}>
+<h2 className={styles.chapter}><span className={styles.number}>03</span>{"Disputes"}</h2>
+<h3>{"Designing the path from reporting a problem to submission"}</h3>
+<p>{"Users can start a dispute from a transaction’s detail page. For eligible transactions, the app guides them through a questionnaire whose questions change according to the transaction and their answers."}</p>
+<p>{"The underlying dispute capability already existed in Marqeta’s SDK. I designed the user-facing questionnaire experience for the app: the flow, form components and interactions for selecting answers, entering amounts, uploading documents and reviewing a submission."}</p>
+<p>{"For an ATM withdrawal, for example, users can specify that they are disputing only part of the amount, enter the amount and explain what happened. They can then upload supporting documents, add further details and review their answers before submitting."}</p>
+<p>{"I worked through the intermediate states as well: choosing a file source, uploading a document and showing when the upload was complete. The transaction summary stays visible throughout the questionnaire so users can keep track of the transaction they are reporting."}</p>
+<Gallery name="atm" />
+<h4>{"A simpler way to set expectations"}</h4>
+<p>{"I initially proposed and designed a dynamic progress indicator that would adjust as answers changed the remaining questions."}</p>
+<p>{"After discussing it with engineering, we agreed that the branching questionnaire already required substantial implementation work. The team could not commit to the additional progress mechanism within the schedule."}</p>
+<p>{"I wanted to preserve its core purpose: helping users understand what to expect. I proposed a short introduction before the questionnaire that explained the process in advance."}</p>
+<p>{"The final Primer tells users that they need to finish in one sitting, that they will answer a few questions, and that updates will arrive by email. Product and Engineering agreed to this simpler approach."}</p>
+<Gallery name="primer" />
+<h4>{"Connecting submission to what happens next"}</h4>
+<p>{"Different dispute paths need different next steps. In the fraud flow, the design explains that the user will need a replacement card, then directs them to order one after submitting."}</p>
+<p>{"Once a dispute is filed, its status appears on the original transaction. When processing is complete, the transaction directs the user to their email for the details."}</p>
+<Gallery name="status" />
+</section>
+<section id="outcomes" className={`${styles.content} ${styles.section}`}>
+<h2>{"Shipped with the app"}</h2>
+<p>{"Wallet, Transactions and Disputes launched as part of Uber Pro Card UK, alongside the areas owned by the rest of the design team."}</p>
+<p>{"My involvement continued from the initial product explorations through detailed design, implementation updates and visual QA. The shipped work includes the account structure we agreed with Uber, the transaction layouts and states, and the self-service dispute flows."}</p>
+</section>
+ <ProjectPagination currentSlug="autobahn" />
+ <footer className={`${styles.content} ${styles.footer}`}><Link href="/work">← Back to work</Link></footer>
+ </main></>}

@@ -125,6 +125,8 @@ export default function MobileMenu({ activeHref }: { activeHref: string }) {
               <a
                 key={link.label}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 onClick={handleClose}
                 className={`w-fit transition-all duration-300 ${link.href === activeHref ? "nav-link-active" : "nav-link"}`}
                 style={{

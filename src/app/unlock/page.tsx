@@ -63,27 +63,16 @@ export default async function UnlockPage({
         <section
           className="content-col-narrow"
           style={{
-            paddingTop: "var(--hero-top)",
+            paddingTop: "clamp(140px, 22vh, 220px)",
+            maxWidth: "380px",
+            width: "100%",
             paddingBottom: "var(--section-gap)",
           }}
         >
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: 400,
-              fontFamily: "var(--font-geist-mono), monospace",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              color: "var(--color-text-muted)",
-              paddingBottom: "16px",
-            }}
-          >
-            Protected case study
-          </p>
           <h1
             style={{
-              fontSize: "var(--font-size-hero)",
-              lineHeight: "var(--line-height-tight)",
+              fontSize: "clamp(24px, 3vw, 28px)",
+              lineHeight: 1.25,
               letterSpacing: "-0.02em",
               fontWeight: 500,
               color: "var(--color-text-strong)",
@@ -93,30 +82,40 @@ export default async function UnlockPage({
           </h1>
           <p
             style={{
-              fontSize: "20px",
-              lineHeight: 1.4,
+              fontSize: "14px",
+              lineHeight: 1.65,
               color: "var(--color-label)",
-              paddingTop: "32px",
-              maxWidth: "520px",
+              paddingTop: "14px",
+              maxWidth: "380px",
             }}
           >
-            This case study contains client work under NDA. If you&apos;d like access, reach out on{" "}
+            This case study contains client work under NDA. If you&apos;d like access, please feel free to contact me at{" "}
             <a
-              href="https://linkedin.com/in/ianpan"
-              style={{ color: "var(--color-text-strong)", textDecoration: "underline" }}
+              href="mailto:ianp.ux@gmail.com"
+              style={{ color: "var(--color-text-strong)", textDecoration: "underline", textUnderlineOffset: "3px" }}
             >
-              LinkedIn
+              ianp.ux@gmail.com
             </a>
             .
+          </p>
+          <p
+            style={{
+              fontSize: "14px",
+              lineHeight: 1.65,
+              color: "var(--color-label)",
+              paddingTop: "10px",
+            }}
+          >
+            If you&apos;re reviewing my work for a role, you can find the password in my resume.
           </p>
 
           <form
             action={unlock}
             style={{
-              paddingTop: "40px",
+              paddingTop: "24px",
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
+              gap: "8px",
               maxWidth: "420px",
             }}
           >
@@ -126,9 +125,6 @@ export default async function UnlockPage({
               style={{
                 fontSize: "14px",
                 fontWeight: 400,
-                fontFamily: "var(--font-geist-mono), monospace",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
                 color: "var(--color-text-muted)",
               }}
             >
@@ -138,34 +134,39 @@ export default async function UnlockPage({
               id="password"
               name="password"
               type="password"
-              autoFocus
               autoComplete="off"
+              required
+              aria-invalid={error ? true : undefined}
+              aria-describedby={error ? "password-error" : undefined}
               style={{
                 fontSize: "16px",
-                padding: "12px 14px",
+                padding: "10px 12px",
+                width: "100%",
+                minWidth: 0,
                 border: "1px solid var(--color-border-strong)",
                 borderRadius: "var(--radius-sm)",
                 background: "transparent",
                 color: "var(--color-text-strong)",
                 fontFamily: "inherit",
-                outline: "none",
               }}
             />
             {error && (
-              <p style={{ fontSize: "14px", color: "#dc2626" }}>
+              <p id="password-error" role="alert" style={{ fontSize: "14px", color: "#dc2626" }}>
                 Incorrect password. Try again.
               </p>
             )}
             <button
               type="submit"
+              className="transition-[filter,transform] duration-150 hover:brightness-110 active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
               style={{
                 marginTop: "8px",
                 fontSize: "16px",
                 fontWeight: 500,
-                padding: "12px 20px",
-                border: "none",
+                padding: "11px 24px",
+                minHeight: "44px",
+                border: "1px solid var(--color-accent)",
                 borderRadius: "var(--radius-sm)",
-                background: "var(--color-text-strong)",
+                background: "var(--color-accent)",
                 color: "var(--color-bg)",
                 cursor: "pointer",
                 alignSelf: "flex-start",
