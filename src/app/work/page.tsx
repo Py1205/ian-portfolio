@@ -4,6 +4,8 @@ import MobileHeader from "@/components/MobileHeader";
 import Sidebar from "@/components/Sidebar";
 import AutobahnThumbnail from "@/components/AutobahnThumbnail";
 import Disputes360Thumbnail from "@/components/Disputes360Thumbnail";
+import PhonewagonThumbnail from "@/components/PhonewagonThumbnail";
+import YirentalThumbnail from "@/components/YirentalThumbnail";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -12,6 +14,10 @@ function ProjectCard({ project }: { project: Project }) {
         <AutobahnThumbnail />
       ) : project.slug === 'disputes360' ? (
         <Disputes360Thumbnail />
+      ) : project.slug === 'yirental' ? (
+        <YirentalThumbnail />
+      ) : project.slug === 'phonewagon' ? (
+        <PhonewagonThumbnail />
       ) : (
         <div
           style={{

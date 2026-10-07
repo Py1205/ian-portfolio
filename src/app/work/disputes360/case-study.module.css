@@ -13,7 +13,12 @@
 .section h3 { font-size: clamp(1.25rem, 1.05rem + .65vw, 1.75rem); font-weight: 500; line-height: 1.3; margin: 44px 0 22px; max-width: 36ch; color: var(--color-text-strong); }
 .section p { font-size: clamp(1rem, .95rem + .15vw, 1.0625rem); line-height: 1.7; max-width: 68ch; margin-bottom: 20px; }
 .visual { margin: 0; }
-.visual a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-border); cursor: zoom-in; }
+.visualCaption { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--color-label); text-align: left; }
+.visual a { display: block; cursor: zoom-in; }
+.framed { padding: 24px; background: var(--color-screen-gallery-bg); border-radius: 28px; }
+.framed a { border-radius: 18px; overflow: hidden; border: 1px solid var(--color-screen-border); }
+.gallery .framed { padding: 20px; border-radius: 24px; }
+.gallery .framed a { border-radius: 12px; }
 .visual a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 .visual img { display: block; width: 100%; height: auto; object-fit: contain; }
 .placeholder { margin: 32px 0; min-height: 160px; padding: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; border: 1px dashed var(--color-border-strong); border-radius: 12px; background: var(--color-screen-gallery-bg); }
@@ -31,6 +36,7 @@
 .footer { padding: 32px 0 56px; color: var(--color-text-muted); }
 @media (min-width: 1021px) { .content { grid-column: 3 / 11; } .page { --hero-top: 160px; } }
 @media (max-width: 600px) {
+  .framed, .gallery .framed { padding: 16px; border-radius: 18px; }
   .meta { grid-template-columns: 1fr; gap: 20px; }
   .section { margin-top: 40px; padding-top: 32px; scroll-margin-top: 80px; }
   .section h2.chapter { gap: 12px; }

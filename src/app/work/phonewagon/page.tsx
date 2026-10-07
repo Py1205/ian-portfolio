@@ -1,3 +1,5 @@
+import Image from "next/image";
+import ScreenShowcase from "@/components/ScreenShowcase";
 import Link from "next/link";
 import styles from "../early-case-study.module.css";
 import BackButton from "@/components/BackButton";
@@ -13,12 +15,34 @@ const NAV_SECTIONS = [
   { id: "delivery", label: "Delivered" },
 ];
 
-const imgPlaceholder = (caption: string) => (
-  <figure className={styles.placeholder}>
-    <span>Image placeholder</span>
-    <figcaption>{caption}</figcaption>
-  </figure>
-);
+const images = {
+  product: { src: "/work/phonewagon/product.avif", width: 2880, height: 1800, alt: "PhoneWagon inbox with conversations, calls, messages, and customer details" },
+  libraries: { src: "/work/phonewagon/design-systems.avif", width: 4240, height: 2302, alt: "Foundation and Website design system libraries with shared colors and interface components" },
+  anatomy: { src: "/work/phonewagon/message-anatomy.avif", width: 2318, height: 1058, alt: "Message anatomy showing the avatar, time and phone line, and main body" },
+  shape: { src: "/work/phonewagon/shape-exploration.avif", width: 2330, height: 692, alt: "Three message shape explorations leading to a rounded bubble without a tail" },
+  color: { src: "/work/phonewagon/color-exploration.avif", width: 2323, height: 1908, alt: "Message color comparison between the initial five groups and final three groups" },
+};
+
+function CaseImage({ name }: { name: keyof typeof images }) {
+  return (
+    <Image
+      {...images[name]}
+      alt={images[name].alt}
+      unoptimized
+      loading={name === "product" ? "eager" : "lazy"}
+      style={{ display: "block", width: "100%", height: "auto" }}
+    />
+  );
+}
+
+function Diagram({ name }: { name: Exclude<keyof typeof images, "product"> }) {
+  const maxWidths = { libraries: 760, anatomy: 680, shape: 720, color: 640 };
+  return (
+    <figure style={{ width: "100%", maxWidth: maxWidths[name], margin: "32px auto" }}>
+      <CaseImage name={name} />
+    </figure>
+  );
+}
 
 export default function PhonewagonPage() {
   return (
@@ -51,9 +75,11 @@ export default function PhonewagonPage() {
           </dl>
         </header>
 
-        {/* Cover placeholder */}
+        {/* Product cover */}
         <div className={styles.content}>
-          {imgPlaceholder("Hero image — Foundation + Website library overview")}
+          <ScreenShowcase columns={1}>
+            <CaseImage name="product" />
+          </ScreenShowcase>
         </div>
 
         <section id="role" className={`${styles.content} ${styles.section}`}>
@@ -99,7 +125,7 @@ export default function PhonewagonPage() {
             </div>
           </div>
 
-          {imgPlaceholder("Library overview — Foundation + Website. Caption: \"Two shipped libraries, each with its own usage guidelines.\"")}
+          <Diagram name="libraries" />
         </section>
 
         {/* ── Zooming In ── */}
@@ -125,7 +151,7 @@ export default function PhonewagonPage() {
             We specified a body width of 40–380px, with 16px internal padding and 24px external spacing. These rules gave the different message types a common layout.
           </p>
 
-          {imgPlaceholder("Anatomy diagram — Avatar / Time and lines / Main body breakdown with explainer cards")}
+          <Diagram name="anatomy" />
 
           {/* Readability */}
           <h4>Defining the text size</h4>
@@ -143,7 +169,7 @@ export default function PhonewagonPage() {
             The final design used a rounded bubble without a tail, with a smaller radius at the corner nearest the avatar. That corner kept a visual connection between the message and its sender.
           </p>
 
-          {imgPlaceholder("Shape exploration — three-option comparison grid")}
+          <Diagram name="shape" />
 
           {/* Color */}
           <h4>Reducing the number of color groups</h4>
@@ -155,7 +181,7 @@ export default function PhonewagonPage() {
             We reduced the palette to three groups. Avatars already identified participants, so color could focus on helping users follow the conversation and distinguish internal notes from customer-facing replies.
           </p>
 
-          {imgPlaceholder("Color iteration — 5 groups vs. 3 groups with reasoning cards")}
+          <Diagram name="color" />
         </section>
 
         <section id="delivery" className={`${styles.content} ${styles.section}`}>

@@ -7,7 +7,7 @@ import ProjectPagination from '@/components/ProjectPagination';
 import styles from './case-study.module.css';
 
 const sections = [{id:'overview',label:'Overview'},{id:'role',label:'My role'},{id:'platform-structure',label:'01 · Platform structure'},{id:'case-lifecycle',label:'02 · Case lifecycle'},{id:'ai-review',label:'03 · AI-assisted review'},{id:'launch',label:'Launched'}];
-function Visual({file,label,priority=false}: {file:string;label:string;priority?:boolean}) {return <figure className={styles.visual}><a href={`/work/disputes360/${file}.avif`} target="_blank" rel="noreferrer" aria-label={`Open full-size image: ${label}`}><Image src={`/work/disputes360/${file}.avif`} alt={label} width={2560} height={file==='sitemap'?1600:1800} sizes="(max-width: 1020px) 94vw, 66vw" unoptimized preload={priority} /></a></figure>;}
+function Visual({file,label,priority=false,framed=true,caption}: {file:string;label:string;priority?:boolean;framed?:boolean;caption?:string}) {return <figure className={`${styles.visual} ${framed ? styles.framed : ""}`}><a href={`/work/disputes360/${file}.avif`} target="_blank" rel="noreferrer" aria-label={`Open full-size image: ${label}`}><Image src={`/work/disputes360/${file}.avif`} alt={label} width={2560} height={file==='sitemap'?1600:1800} sizes="(max-width: 1020px) 94vw, 66vw" unoptimized preload={priority} /></a>{caption && <figcaption className={styles.visualCaption}>{caption}</figcaption>}</figure>;}
 function Placeholder({label,leading=false}: {label:string;leading?:boolean}) {return <figure className={`${styles.placeholder} ${leading?styles.leading:''}`}><span>Image placeholder</span><figcaption>{label}</figcaption></figure>;}
 function SupportingGallery(){return <div className={styles.gallery}>{[['reporting','Reporting'],['filter','Case filters'],['email-template','Email templates'],['bulk-upload','Bulk upload']].map(([file,label])=><div key={file}><Visual file={file} label={label}/><p>{label}</p></div>)}</div>;}
 export default function Disputes360Page(){return <>
@@ -26,8 +26,7 @@ export default function Disputes360Page(){return <>
 </section>
 <section id="platform-structure" className={`${styles.content} ${styles.section}`}>
 <h2 className={styles.chapter}><span className={styles.number}>01</span>{" Platform structure"}</h2>
-<Visual file="sitemap" label="Platform navigation" />
-<p className={styles.caption}>{"The navigation separates analytics, intake, transaction lookup, and case work. All Cases and saved views share the same underlying case table."}</p>
+<Visual file="sitemap" label="Platform navigation" caption="The navigation separates analytics, intake, transaction lookup, and case work. All Cases and saved views share the same underlying case table." />
 <h3>{"Organizing different ways into the same case work"}</h3>
 <p>{"The old disputes product opened on a case queue inside the Marqeta Dashboard. Other parts of the work depended on Salesforce, Looker, spreadsheets, and manual audit processes."}</p>
 <p>{"The standalone platform needed its own navigation. I organized analytics under Home, single and bulk submissions under Intake, and transaction lookup under Cardholder Search. Views became the main area for working through existing cases."}</p>

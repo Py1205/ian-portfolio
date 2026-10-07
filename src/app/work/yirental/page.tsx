@@ -1,5 +1,8 @@
+import Image from "next/image";
+import ScreenShowcase from "@/components/ScreenShowcase";
 import Link from "next/link";
 import styles from "../early-case-study.module.css";
+import yirentalStyles from "./case-study.module.css";
 import BackButton from "@/components/BackButton";
 import ThemeToggle from "@/components/ThemeToggle";
 import CaseStudyNav from "@/components/CaseStudyNav";
@@ -14,12 +17,39 @@ const NAV_SECTIONS = [
   { id: "outcome", label: "Outcome" },
 ];
 
-const imgPlaceholder = (caption: string) => (
-  <figure className={styles.placeholder}>
-    <span>Image placeholder</span>
-    <figcaption>{caption}</figcaption>
-  </figure>
-);
+const images = {
+  chooseSearchType: { src: "/work/yirental/choose-search-type.avif", width: 750, height: 1624, alt: "Choose a search type from six rental and community categories" },
+  searchShortcut: { src: "/work/yirental/search-shortcut.avif", width: 750, height: 1624, alt: "Search shortcuts with recent searches, nearby listings, and suggested cities" },
+  homepage: { src: "/work/yirental/homepage.avif", width: 750, height: 1624, alt: "Yirental homepage with Explore Seattle and rental categories" },
+  defaultFilter: { src: "/work/yirental/default-filter.avif", width: 750, height: 1624, alt: "Rental listings with default search filters" },
+  moreFilters: { src: "/work/yirental/more-filters.avif", width: 750, height: 1624, alt: "More filters for rental preferences" },
+  previous: { src: "/work/yirental/previous-solution.avif", width: 1640, height: 1822, alt: "Previous rental search screens, three usability issues, and a 2.8 out of 5 satisfaction score" },
+  intents: { src: "/work/yirental/search-intents.avif", width: 1532, height: 544, alt: "Exploratory renters browse to clarify their needs; navigational renters search for specific requirements" },
+  score: { src: "/work/yirental/satisfaction-score.avif", width: 704, height: 510, alt: "Satisfaction increased from 2.8 to 4.7 out of 5, based on feedback from 136 participants" },
+  web: { src: "/work/yirental/web.avif", width: 2320, height: 1059, alt: "Yirental web search with service categories, recent searches, and popular cities" },
+};
+
+function CaseImage({ name, eager = false }: { name: keyof typeof images; eager?: boolean }) {
+  return (
+    <Image
+      {...images[name]}
+      alt={images[name].alt}
+      unoptimized
+      loading={eager ? "eager" : "lazy"}
+      style={{ display: "block", width: "100%", height: "auto" }}
+    />
+  );
+}
+
+function Diagram({ name }: { name: "previous" | "intents" | "score" }) {
+  const maxWidths = { previous: 640, intents: 640, score: 352 };
+
+  return (
+    <div style={{ width: "100%", maxWidth: maxWidths[name], margin: "0 auto" }}>
+      <CaseImage name={name} />
+    </div>
+  );
+}
 
 export default function YirentalPage() {
   return (
@@ -52,9 +82,13 @@ export default function YirentalPage() {
           </dl>
         </header>
 
-        {/* Cover placeholder */}
+        {/* Cover images */}
         <div className={styles.content}>
-          {imgPlaceholder("Hero image — final Yirental mobile search and filter screens side by side")}
+          <ScreenShowcase columns={3}>
+            <CaseImage name="homepage" eager />
+            <CaseImage name="defaultFilter" eager />
+            <CaseImage name="moreFilters" eager />
+          </ScreenShowcase>
         </div>
 
         <section id="role" className={`${styles.content} ${styles.section}`}>
@@ -80,7 +114,7 @@ export default function YirentalPage() {
             Three problems emerged. Users had to change location and service type in separate steps. The filters offered too few options for specific needs. Dense screens made the listings themselves harder to scan.
           </p>
 
-          {imgPlaceholder("Previous experience — two-phone screenshot with three numbered pain-point callouts. Caption: \"Three issues that compounded into a 2.8/5 satisfaction score.\"")}
+          <div style={{ marginTop: "32px" }}><Diagram name="previous" /></div>
         </section>
 
         {/* ── The Reframe ── */}
@@ -119,7 +153,7 @@ export default function YirentalPage() {
             I used these two search behaviors to guide the redesign: give people room to explore, while keeping categories and detailed filters easy to reach.
           </p>
 
-          {imgPlaceholder("Exploratory / Navigational — two-icon diagram with intent descriptions")}
+          <div style={{ marginTop: "32px" }}><Diagram name="intents" /></div>
         </section>
 
         {/* ── The Design ── */}
@@ -146,7 +180,14 @@ export default function YirentalPage() {
             I reduced information density and clarified the hierarchy across the search flow. I also replaced generic icons with a custom set that followed the visual guidelines. These changes gave the listings more room and made the surrounding controls more consistent.
           </p>
 
-          {imgPlaceholder("Final mobile search entry screen (\"Explore Seattle\") and final filter screen (\"More filters\") side by side. Caption: \"Two interfaces, two intents — one consistent system.\"")}
+          <div style={{ marginTop: "32px" }}>
+            <ScreenShowcase className={yirentalStyles.hifi}>
+              <CaseImage name="homepage" />
+              <CaseImage name="chooseSearchType" />
+              <CaseImage name="searchShortcut" />
+              <CaseImage name="moreFilters" />
+            </ScreenShowcase>
+          </div>
         </section>
 
         {/* ── Outcome ── */}
@@ -157,9 +198,17 @@ export default function YirentalPage() {
             The redesigned search experience launched on November 29, 2020. Three months later, a follow-up survey using the same questionnaire recorded a satisfaction score of 4.7 out of 5 across 136 respondents, compared with 2.8 before the redesign.
           </p>
 
+          <div style={{ margin: "32px 0" }}><Diagram name="score" /></div>
+
           <p>
             I also worked with the web team to carry the search approach into the web app.
           </p>
+
+          <div style={{ marginTop: "32px" }}>
+            <ScreenShowcase columns={1}>
+              <CaseImage name="web" />
+            </ScreenShowcase>
+          </div>
         </section>
 
         {/* ── Prev / Next ── */}
