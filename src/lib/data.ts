@@ -31,7 +31,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Disputes360",
+    title: "Disputes Portal",
     description: "Case management and AI-assisted evidence review for dispute operations.",
     category: "B2B SaaS · Fintech",
     tags: ["SaaS", "Fintech"],

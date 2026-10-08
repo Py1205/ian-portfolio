@@ -3,7 +3,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import MobileHeader from "@/components/MobileHeader";
 import Sidebar from "@/components/Sidebar";
 import AutobahnThumbnail from "@/components/AutobahnThumbnail";
-import Disputes360Thumbnail from "@/components/Disputes360Thumbnail";
+import DisputesPortalThumbnail from "@/components/DisputesPortalThumbnail";
 
 export default function Home() {
   return (
@@ -63,7 +63,7 @@ export default function Home() {
               {project.slug === 'autobahn' ? (
                 <AutobahnThumbnail />
               ) : project.slug === 'disputes360' ? (
-                <Disputes360Thumbnail />
+                <DisputesPortalThumbnail />
               ) : (
                 <div
                   style={{

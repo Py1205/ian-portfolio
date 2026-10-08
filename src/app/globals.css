@@ -11,7 +11,7 @@
     --grid-margin: 40px;
     --grid-gap: 20px;
     --grid-columns: repeat(12, 1fr);
-    --content-col: 1 / -1;
+    --content-max-width: 1120px;
 
     /* Layout */
     --nav-top: 40px;
@@ -41,12 +41,6 @@
   /* ≤1020px: tablet/small desktop */
   @media (max-width: 1020px) {
     :root {
-      --content-col: 1 / -1;
-    }
-  }
-
-  @media (max-width: 1020px) {
-    :root {
       --grid-margin: 20px;
       --grid-columns: repeat(6, 1fr);
       --hero-top: 160px;
@@ -61,12 +55,6 @@
   }
 
   /* ≤500px: mobile */
-  @media (min-width: 1021px) {
-    :root {
-      --content-col: 3 / -1;
-    }
-  }
-
   @media (max-width: 500px) {
     :root {
       --grid-margin: 16px;
@@ -160,18 +148,10 @@
 }
 
 @layer components {
-  .content-col {
-    grid-column: 1 / -1;
-    @media (min-width: 1021px) {
-      grid-column: 3 / -1;
-    }
-  }
-
+  .content-col,
   .content-col-narrow {
+    min-width: 0;
     grid-column: 1 / -1;
-    @media (min-width: 1021px) {
-      grid-column: 3 / 11;
-    }
   }
 
   .page-grid {
@@ -181,6 +161,15 @@
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-gap);
     row-gap: var(--grid-gap);
+
+    @media (min-width: 1021px) {
+      /* Center the content itself in the viewport once the fixed nav fits
+         beside it. On smaller desktops, reserve a 240px navigation rail. */
+      max-width: var(--content-max-width);
+      margin-left: max(240px, calc((100% - var(--content-max-width)) / 2));
+      margin-right: var(--grid-margin);
+      padding-inline: 0;
+    }
   }
 
   .nav-link {

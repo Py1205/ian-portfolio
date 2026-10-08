@@ -28,5 +28,5 @@
 .supplement { margin: 28px 0 36px; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
 .supplement summary { cursor: pointer; padding: 18px 0; font-size: 15px; color: var(--color-label); }
 .footer { padding: 32px 0 56px; }
-@media (min-width: 1021px) { .content { grid-column: 3 / 11; } .page { --hero-top: 160px; } }
+@media (min-width: 1021px) { .page { --hero-top: 160px; } }
 @media (max-width: 600px) { .meta { grid-template-columns: 1fr; gap: 20px; } .gallery { grid-template-columns: 1fr; padding: 16px; } .preview { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 16px; } .preview figcaption { font-size: 11px; } .section { margin-top: 32px; padding-top: 32px; } .section h2.chapter { gap: 12px; } }

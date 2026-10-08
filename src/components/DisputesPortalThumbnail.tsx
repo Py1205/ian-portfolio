@@ -1,5 +1,5 @@
-// Disputes360 project thumbnail — single desktop screen, cropped at bottom for 16/9
-export default function Disputes360Thumbnail() {
+// Disputes Portal project thumbnail, cropped at the bottom for 16/9
+export default function DisputesPortalThumbnail() {
   return (
     <div
       className="thumbnail-card"

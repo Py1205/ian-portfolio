@@ -1,0 +1,54 @@
+{
+  "hero": [
+    2560,
+    1800
+  ],
+  "sitemap": [
+    2560,
+    1600
+  ],
+  "case-page": [
+    2560,
+    2308
+  ],
+  "case-lifecycle-annotated": [
+    2560,
+    2308
+  ],
+  "document-review": [
+    2560,
+    1800
+  ],
+  "nav-early": [
+    512,
+    1256
+  ],
+  "nav-current": [
+    512,
+    1256
+  ],
+  "submission-recommended": [
+    2048,
+    960
+  ],
+  "submission-not-recommended": [
+    2048,
+    960
+  ],
+  "reporting": [
+    2560,
+    1800
+  ],
+  "filter": [
+    2560,
+    1800
+  ],
+  "email-template": [
+    2560,
+    1800
+  ],
+  "bulk-upload": [
+    2560,
+    1800
+  ]
+}

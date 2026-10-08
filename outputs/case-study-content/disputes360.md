@@ -1,37 +1,37 @@
 <!-- IMPLEMENTATION NOTES (not public copy)
-User-approved website draft. Supersedes V0. Preserve the numbered chapter hierarchy below.
-Each numbered H2 must be followed immediately by its leading visual, before any H3 or body copy. Product/role and launch sections are unnumbered.
-Reuse only suitable existing assets in public/work/disputes360. Do not generate images, diagrams, animations, or UI illustrations. Do not extract or crop screenshots supplied in chat or on Desktop. User will supply replacement assets incrementally. Missing, unsuitable, outdated, or uncertain assets must remain intentional placeholders with short English labels. Do not fill them with invented UI or unrelated banners.
-Start with static images/placeholders. Future animation concepts describe replacement assets, not work to generate now.
-Known unsuitable asset: banner-reason-code.avif has contradictory recommendation/reason text and inconsistent reason-code mapping. Do not use. hero.avif and case-page.avif show an early Open-stage view, not a multi-stage lifecycle; do not use as proof of the complete timeline. sitemap.avif is a suitable existing chapter 01 candidate. Existing reporting/filter/email-template/bulk-upload assets may form a compact supporting gallery if still suitable. Screenshot KPI values are not impact metrics.
-No claimed quantified improvement, fabricated user testing, or attribution of build-vs-buy/automation strategy to the designer. Human review is exception-based; final Submit/Close remains human-executed. GA: September 2026. Reanalysis is button-triggered today. Automatic execution and automatic reanalysis are future directions.
+Current website copy and asset plan, updated October 7, 2026.
+Display name: Disputes Portal. Existing /work/disputes360 URL and asset directory remain stable.
+Nine user-supplied exports converted to AVIF. Preserve embedded annotations.
+Reanalysis runs when new evidence or agent input becomes available. Final submission and closure remain human-executed.
+Recommendation images are illustrative alternative states, not a single case sequence or measured outcomes.
+All image placeholders are resolved or removed. Navigation images are compact within a full-width frame; recommendation examples are stacked with titles and captions inside their frames.
 -->
 
-# Disputes360
+# Disputes Portal
 
 A workspace for resolving card disputes, connecting case history, evidence, and AI-assisted review.
 
-**Role:** Design Lead · Sole Product Designer at Marqeta  
-**Scope:** End-to-end design of Disputes360, including information architecture, case management, operational workflows, and AI-assisted review  
-**Timeline:** July 2025–present  
-**Team:** Product, Engineering, Disputes Operations, and Compliance  
+**Role:** Design Lead · Sole Product Designer at Marqeta
+**Scope:** End-to-end design of Disputes Portal, including information architecture, case management, operational workflows, and AI-assisted review
+**Timeline:** July 2025–present
+**Team:** Product, Engineering, Disputes Operations, and Compliance
 **Launch:** General availability · September 2026
 
-<!-- VISUAL hero: Reuse public/work/disputes360/hero.avif as a general product overview if suitable. Otherwise placeholder: "Disputes360 workspace". No screenshot cropping or invented annotations. -->
+<!-- Hero: public/work/disputes360/hero.avif, updated Cover export. Also used on Home and Work thumbnails. -->
 
 ## The product and my role
 
 When a cardholder disputes a transaction, an operations agent may need to review the claim, assemble evidence, and submit the case to a card network such as Visa or Mastercard. Some cases require further exchanges with the merchant’s side before they can be resolved.
 
-Disputes360 brings this work into a dedicated platform. The team’s goal was to consolidate fragmented tools and automate more of the case analysis, involving agents when a case needs human judgment.
+Disputes Portal brings this work into a dedicated platform. The team’s goal was to consolidate fragmented tools and automate more of the case analysis, involving agents when a case needs human judgment.
 
 I had spent four years designing Marqeta’s previous disputes product inside the Marqeta Dashboard. After exploring a third-party replacement, the company decided to build its own platform.
 
-As the sole designer, I led the design across Disputes360. My work covered the platform structure, case workflows, reporting, communications, and AI review. The following sections focus on how I organized the workspace and developed its two core experiences: working through a case and reviewing AI’s unresolved judgments.
+As the sole designer, I led the design of Disputes Portal through launch. My work covered platform structure, case workflows, reporting, communications, and AI review. This case study focuses on how I connected current work with case history and helped agents resolve the questions AI could not answer.
 
 ## 01 · Platform structure
 
-<!-- LEADING VISUAL 01 (immediately under chapter title): Final product navigation showing Home, Intake, Cardholder Search, Views, Settings, and Views children. Existing public/work/disputes360/sitemap.avif is a suitable candidate; inspect before reuse. If unsuitable, placeholder: "Platform navigation". Do not generate an infographic. -->
+<!-- Leading visual: updated sitemap.avif with embedded annotations. -->
 
 *The navigation separates analytics, intake, transaction lookup, and case work. All Cases and saved views share the same underlying case table.*
 
@@ -43,9 +43,9 @@ The standalone platform needed its own navigation. I organized analytics under H
 
 Most dispute agents handle cases initiated by cardholders or call center agents. Creating a case remains available, but their everyday work centers on reviewing and resolving cases already in the system.
 
-<!-- SUPPORTING VISUAL 01: Compact comparison of old MQD navigation and standalone Disputes360 navigation. No suitable approved comparison asset currently identified. Placeholder: "From MQD to Disputes360". Do not substitute four-tools-in-one.svg: it explains tool consolidation, not navigation. Do not crop chat screenshots. -->
-
 In early explorations, Case List and Saved Views sat in separate navigation groups. I brought them together under Views because they share the same underlying case table.
+
+<!-- Navigation comparison: nav-early.avif and nav-current.avif, placed immediately after the early-exploration paragraph. -->
 
 All Cases shows active cases. Assigned to Me filters that set by ownership. Custom Views let agents save a filter configuration and return to that subset directly. Grouping these entry points together makes their relationship explicit: each is a different view of the same case work.
 
@@ -53,9 +53,9 @@ All Cases shows active cases. Assigned to Me filters that set by ownership. Cust
 
 ## 02 · Case lifecycle
 
-<!-- LEADING VISUAL 02 (immediately under chapter title): New case page with multiple lifecycle stages, expanded current node, collapsed historical nodes, and Case Details. Placeholder: "Case lifecycle timeline". Existing Open-only hero/case-page images do not demonstrate this concept adequately. User will supply asset. Future optional animation may show current work, expansion of history, and Case Details; do not create it now. -->
+<!-- Leading visual: case-page.avif, unannotated and framed. -->
 
-*The current stage opens at the top. Earlier stages remain available below, with case-level information accessible throughout.*
+*The current stage opens first, while earlier stages remain accessible within the same case.*
 
 ### Keeping current work connected to its history
 
@@ -77,7 +77,7 @@ The timeline begins with Cardholder Contacted and continues through Open, Ready,
 
 The current stage opens by default with its forms and actions. Completed stages become read-only and collapse below it. Agents can work on what needs attention now, then expand an earlier stage to inspect its details.
 
-<!-- SUPPORTING VISUAL 02: Focused old intake/backend vs unified timeline comparison, explaining the structural change rather than repeating the full leading image. Placeholder: "From separate stages to one timeline". User to supply approved exports. -->
+<!-- Supporting visual: case-lifecycle-annotated.avif, framed. Explains case context, current work, and accessible history. -->
 
 Long cases still require scrolling. Repeated rounds and deep historical review were less common in the workflow we were designing for, so the layout prioritizes current work while preserving access to earlier details.
 
@@ -87,9 +87,9 @@ The separate Activity tab provides a finer-grained record, including state chang
 
 ## 03 · AI-assisted review
 
-<!-- LEADING VISUAL 03 (immediately under chapter title): Actual document review interface showing documents, AI reasoning, and attribute Yes/No controls. Placeholder: "Evidence and human review". No suitable actual review asset currently supplied. Do not substitute a recommendation banner, generate a diagram, or extract chat screenshots. Future user-supplied animation could cover review through reanalysis; if so remove the redundant final flow visual. -->
+<!-- Leading visual: document-review.avif with embedded source, summary, and decision annotations. -->
 
-*Agents inspect the evidence alongside AI’s reasoning and the questions that need human judgment.*
+*Agents review source documents, consult document summaries, and resolve the questions that need human judgment.*
 
 ### Bringing agents in when the system needs judgment
 
@@ -115,38 +115,32 @@ Each question needed a clear determination and an evidence source. Whether a sub
 
 I also aligned the questions so that Yes consistently supports submission. This keeps the answer’s meaning consistent as agents move through the review. I developed these conversions and discussed their feasibility with Ops, Product, and Engineering.
 
-<!-- SUPPORTING VISUAL 03A: One actual cancellation example connecting the question, evidence, and Yes/No control. Placeholder: "From criterion to review question". Do not generate illustrative UI. Keep the table above as text; full mapping belongs in supplementary material. -->
+<!-- No separate visual: the document-review image and text table cover this relationship. -->
 
 ### Keeping evidence beside the decision
 
-The review interface places documents on the left, AI reasoning in the middle, and attribute states with Yes/No controls on the right. Agents can inspect the source material while answering the question it relates to.
+The review interface keeps the source document beside the questions that need judgment. Agents can open a document summary panel for key findings, review the assessment on the right, and answer what the evidence supports. When evidence is missing, they can request it from the cardholder.
 
 <!-- Do not repeat the full review screenshot here: it now leads the chapter. -->
 
-An early version used separate Conflict, Uncertain, and Missing labels. I consolidated them because the immediate task was the same: inspect the evidence and make a determination.
-
-I also explored separate Summary and Attributes tabs, then brought them into one scrolling panel. That put more information on screen, but kept the assessment and its questions available together.
-
-<!-- SUPPORTING VISUAL 03B: Two focused iteration comparisons: labels consolidated; tabs to scrolling panel. Placeholder: "Review interface iterations". User to supply exports; no invented before/after designs. These are design iterations, not evidence of user testing. -->
-
 ### Returning human input to the analysis
 
-An individual Yes or No does not immediately change the recommendation. The agent completes the questions requiring review, then clicks a button to run the analysis again.
+As new evidence or agent input becomes available, the system reruns its analysis and updates the case recommendation.
 
 The system considers those inputs alongside the evidence and other case conditions. Attributes carry different importance: a No on a critical condition can lead to Do Not Submit, while sufficiently satisfied conditions can support Submit to Network.
 
-The updated recommendation gives the agent the next action. AI identifies where it needs judgment, the agent supplies it, and the system reassesses the case.
+Once the review questions are resolved, AI combines the agent’s judgment with the evidence and case conditions to reach a final recommendation: Ready to submit or Do not submit. The agent carries out the final action.
 
-<!-- SUPPORTING VISUAL 03C: Unresolved questions > completed human inputs > button-triggered reanalysis > updated recommendation. Placeholder: "Human input to updated recommendation". Do not generate this flow. Future supplied examples must be labeled illustrative; confidence numbers are not measured results. Remove this slot if a future leading animation already demonstrates the full flow. -->
+<!-- Two vertically stacked recommendation examples, with titles Final recommendation 1: Ready to submit and Final recommendation 2: Do not submit inside each frame. Explain that resolved review questions lead to a recommendation based on the evidence and blocking conditions; these are alternative examples, not consecutive states. -->
 
 ## Launched in September 2026
 
-Disputes360 reached general availability in September 2026. AI recommendations, human attribute review, and reanalysis are in use alongside the platform’s case management workflows.
+Disputes Portal reached general availability in September 2026. AI recommendations, human attribute review, and reanalysis are in use alongside the platform’s case management workflows.
 
 My design scope also included reporting, case filters, email templates, bulk upload, and supporting case tabs.
 
 <!-- SUPPORTING GALLERY: Compact existing asset gallery using public/work/disputes360/reporting.avif, filter.avif, email-template.avif, bulk-upload.avif if suitable. Use readable contained images, not new crops or generated composites. Short labels: Reporting / Case filters / Email templates / Bulk upload. If any asset is unsuitable or outdated, use a placeholder for that item. No sequential full-page feature tour. -->
 
-The current release retains human execution of submission and closure. The team is considering automatic execution for high-confidence cases and automatic reanalysis after review.
+The current release reruns analysis as new evidence or agent input becomes available. Agents retain control of final submission and closure.
 
 My work covered the platform’s overall organization and the detailed interactions agents use to move a case forward: finding the right cases, working through their history, and contributing judgment when AI needs it.

@@ -3,7 +3,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import MobileHeader from "@/components/MobileHeader";
 import Sidebar from "@/components/Sidebar";
 import AutobahnThumbnail from "@/components/AutobahnThumbnail";
-import Disputes360Thumbnail from "@/components/Disputes360Thumbnail";
+import DisputesPortalThumbnail from "@/components/DisputesPortalThumbnail";
 import PhonewagonThumbnail from "@/components/PhonewagonThumbnail";
 import YirentalThumbnail from "@/components/YirentalThumbnail";
 
@@ -13,7 +13,7 @@ function ProjectCard({ project }: { project: Project }) {
       {project.slug === 'autobahn' ? (
         <AutobahnThumbnail />
       ) : project.slug === 'disputes360' ? (
-        <Disputes360Thumbnail />
+        <DisputesPortalThumbnail />
       ) : project.slug === 'yirental' ? (
         <YirentalThumbnail />
       ) : project.slug === 'phonewagon' ? (
