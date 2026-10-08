@@ -172,6 +172,14 @@
     }
   }
 
+  .case-study-page {
+    --content-max-width: 960px;
+
+    @media (max-width: 1020px) {
+      padding-inline: max(var(--grid-margin), calc((100% - var(--content-max-width)) / 2));
+    }
+  }
+
   .nav-link {
     color: var(--color-text-muted);
     transition: color 150ms ease;

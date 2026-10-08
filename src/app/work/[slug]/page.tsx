@@ -26,7 +26,7 @@ export default async function CaseStudyPage({
         <ThemeToggle />
       </div>
 
-      <main className="page-grid content-col-narrow">
+      <main className="page-grid case-study-page content-col-narrow">
         {/* Hero */}
         <section
           className="content-col-narrow"
@@ -51,7 +51,7 @@ export default async function CaseStudyPage({
           </h1>
           <p
             className="pt-6"
-            style={{ fontSize: "20px", color: "var(--color-text)", maxWidth: "560px" }}
+            style={{ fontSize: "20px", color: "var(--color-text)" }}
           >
             {project.description}
           </p>

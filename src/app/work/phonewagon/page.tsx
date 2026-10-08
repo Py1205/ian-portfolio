@@ -55,7 +55,7 @@ export default function PhonewagonPage() {
       </div>
       <CaseStudyNav sections={NAV_SECTIONS} />
 
-      <main className={`page-grid ${styles.page}`}>
+      <main className={`page-grid case-study-page ${styles.page}`}>
 
         {/* ── Hero ── */}
         <header id="overview" className={`${styles.content} ${styles.hero}`}>

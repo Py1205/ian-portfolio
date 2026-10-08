@@ -14,7 +14,7 @@ export default function DisputesPortalPage(){return <>
 <div className="fixed z-[300]" style={{top:'var(--nav-top)',left:'var(--grid-margin)'}}><BackButton/></div>
 <div className="fixed z-[300]" style={{bottom:'var(--nav-top)',left:'var(--grid-margin)'}}><ThemeToggle/></div>
 <CaseStudyNav sections={sections}/>
-<main className={`page-grid ${styles.page}`}>
+<main className={`page-grid case-study-page ${styles.page}`}>
 <header id="overview" className={`${styles.content} ${styles.hero}`}><h1>{"Disputes Portal"}</h1><p className={styles.intro}>{"A workspace for resolving card disputes, connecting case history, evidence, and AI-assisted review."}</p><dl className={styles.meta}><div><dt>{"Role"}</dt><dd>{"Design Lead · Sole Product Designer at Marqeta"}</dd></div><div><dt>{"Scope"}</dt><dd>{"End-to-end design of Disputes Portal, including information architecture, case management, operational workflows, and AI-assisted review"}</dd></div><div><dt>{"Timeline"}</dt><dd>{"July 2025–present"}</dd></div><div><dt>{"Team"}</dt><dd>{"Product, Engineering, Disputes Operations, and Compliance"}</dd></div><div><dt>{"Launch"}</dt><dd>{"General availability · September 2026"}</dd></div></dl></header>
 <div className={styles.content}><Visual file="hero" label="Disputes Portal workspace" priority /></div>
 <section id="role" className={`${styles.content} ${styles.section}`}>

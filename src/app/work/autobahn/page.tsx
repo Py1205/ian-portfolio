@@ -37,7 +37,7 @@ export default function AutobahnPage(){return <>
  <div className="fixed z-[300]" style={{top:'var(--nav-top)',left:'var(--grid-margin)'}}><BackButton /></div>
  <div className="fixed z-[300]" style={{bottom:'var(--nav-top)',left:'var(--grid-margin)'}}><ThemeToggle /></div>
  <CaseStudyNav sections={sections} />
- <main className={`page-grid ${styles.page}`}>
+ <main className={`page-grid case-study-page ${styles.page}`}>
  <header id="overview" className={`${styles.content} ${styles.hero}`}>
  <h1>{"Uber Pro Card UK"}</h1><p className={styles.intro}>{"Helping UK drivers and couriers manage earnings, track spending, and report transaction problems."}</p>
  <dl className={styles.meta}><div><dt>{"Role"}</dt><dd>{"Senior Product Designer at Marqeta"}</dd></div><div><dt>{"Scope"}</dt><dd>{"Wallet, Transactions and Disputes"}</dd></div><div><dt>{"Timeline"}</dt><dd>{"January 2025 through development and launch"}</dd></div><div><dt>{"Team"}</dt><dd>{"Approximately six designers, working with Product, Engineering and Uber"}</dd></div></dl>
